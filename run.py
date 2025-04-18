@@ -38,7 +38,8 @@ if args.model == "logistic":
     model = LogisticModel(max_iter=1000)
 elif args.model == "dp_logistic":
     print("Using DP-Logistic Regression model.")
-    model = DPLogisticModel(max_iter=1000)  # Add DP-SGD-specific parameters if needed
+    num_classes = len(set(y_train))  # Determine the number of unique classes in the training labels
+    model = DPLogisticModel(max_iter=1000, input_dim=X_train.shape[1], num_classes=num_classes)  # Add DP-SGD-specific parameters if needed
 
 # Train the model
 model.train(X_train, y_train)

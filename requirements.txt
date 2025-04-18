@@ -5,3 +5,4 @@ pydantic-settings
 scikit-learn
 numpy
 joblib
+opacus

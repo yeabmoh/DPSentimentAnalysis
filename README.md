@@ -47,9 +47,10 @@ DPSentimentAnalysis is a sentiment analysis project that uses BERT embeddings an
 Start the Qdrant database using Docker:
 ```bash
    docker run -d -p 6333:6333 -v $(pwd)/qdrant_data:/qdrant/storage --name qdrant qdrant/qdrant
+   docker start qdrant
 ```
 * `-p 6333:6333`: Maps port 6333 on your machine to Qdrant's port.
-* `-v $(pwd)/qdrant_data:/qdrant/storage`: Mounts the qdrant_data folder for persistent storage.
+* `-v $(pwd)/qdrant_data:/qdrant/storage`: Mounts the qdrant_data folder for persistent storage. Make sure `$(pwd)/qdrant_data` is an absolute path to the qdrant_data foler you just created in the home repository with the `mkdir` command
 * `--name qdrant`: Names the container qdrant.
 
 ### Step 2: Run the Sentiment Analysis Pipeline

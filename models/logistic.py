@@ -3,12 +3,20 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, classification_report
 from typing import Dict, Any
 
+
 class LogisticModel:
     def __init__(self, **kwargs):
         """
         Initialize the Logistic Regression model with configurable parameters.
         """
-        self.model = LogisticRegression(**kwargs)
+        self.model = None  # Placeholder for the model
+        self._initialize_model(**kwargs)
+
+    def _initialize_model(self, **kwargs):
+        """
+        Initialize the model for multi-class classification.
+        """
+        self.model = LogisticRegression(multi_class="multinomial", solver="lbfgs", **kwargs)
 
     def train(self, X_train: np.ndarray, y_train: np.ndarray):
         """
@@ -18,8 +26,6 @@ class LogisticModel:
             X_train (np.ndarray): Training feature matrix.
             y_train (np.ndarray): Training labels.
         """
-        print(X_train[0:100])
-        print(y_train[0:100])
         self.model.fit(X_train, y_train)
 
     def evaluate(self, X_test: np.ndarray, y_test: np.ndarray) -> Dict[str, Any]:
@@ -33,7 +39,7 @@ class LogisticModel:
         Returns:
             Dict[str, Any]: A dictionary containing evaluation metrics.
         """
-        y_pred = self.model.predict(X_test)
+        y_pred = self.predict(X_test)
         accuracy = accuracy_score(y_test, y_pred)
         report = classification_report(y_test, y_pred, output_dict=True)
         return {
