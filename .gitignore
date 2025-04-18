@@ -1,0 +1,30 @@
+# Python-related
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+
+# Virtual environment
+venv/
+env/
+
+# Data and model files
+qdrant_data/
+*.joblib
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# VSCode settings
+.vscode/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
