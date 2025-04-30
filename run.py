@@ -2,6 +2,7 @@ import os
 import argparse
 from data.scripts.load_data import is_qdrant_data_empty, load_data_from_qdrant
 from data.scripts.bert_preprocessing_script import preprocess_and_store_data
+from data.scripts.sparsify import preprocess_and_store_noisy_decoded_embeddings
 from models.logistic import LogisticModel
 from models.dp_logistic import DPLogisticModel
 from models.mlp import MLPModel
@@ -23,12 +24,13 @@ parser.add_argument(
 )
 args = parser.parse_args()
 # preprocess_and_store_data()
+preprocess_and_store_data()
 # Check if Qdrant data is empty
-if is_qdrant_data_empty(QDRANT_DATA_PATH):
-    print("Qdrant data is empty. Running preprocessing...")
+# if is_qdrant_data_empty(QDRANT_DATA_PATH):
+#     print("Qdrant data is empty. Running preprocessing...")
 
-else:
-    print("Qdrant data found. Loading data...")
+# else:
+#     print("Qdrant data found. Loading data...")
 
 # Load train and test data from Qdrant
 X_train, y_train = load_data_from_qdrant(TRAIN_COLLECTION_NAME)
@@ -47,21 +49,35 @@ elif args.model == "mlp":
                      hidden=256, batch_size=64, epochs=50)
 
 elif args.model == "dp_logistic":
-    print("Using DP-MLP (DP-SGD) model.")
-    model = DPLogisticModel(input_dim=input_dim, num_classes=num_classes,
-                            noise_multiplier=0.6, max_grad_norm=1.0,
-                            batch_size=64, epochs=50)
+    print("Running DP-MLP (DP-SGD) experiments with different noise multipliers.")
+    noise_levels = [0.1, 0.2,0.3, 0.4,0.5, 0.6,0.7, 0.8,0.9, 1.0]
+
+    for noise in noise_levels:
+        print(f"\n--- Training with noise_multiplier = {noise} ---")
+        model = DPLogisticModel(
+            input_dim=input_dim,
+            num_classes=num_classes,
+            noise_multiplier=noise,
+            max_grad_norm=1.0,
+            batch_size=64,
+            epochs=50,
+        )
+        model.train(X_train, y_train)
+        metrics = model.evaluate(X_test, y_test)
+        print("Accuracy:", metrics["accuracy"])
+        print("Classification Report:", metrics["classification_report"])
+        model.save(f"dp_logistic_noise{noise}_model.joblib")
 
 else:
     raise ValueError(f"Unknown model flag: {args.model}")
 
 # Train the model
-model.train(X_train, y_train)
+# model.train(X_train, y_train)
 
-# Evaluate the model
-metrics = model.evaluate(X_test, y_test)
-print("Accuracy:", metrics["accuracy"])
-print("Classification Report:", metrics["classification_report"])
+# # Evaluate the model
+# metrics = model.evaluate(X_test, y_test)
+# print("Accuracy:", metrics["accuracy"])
+# print("Classification Report:", metrics["classification_report"])
 
 
 

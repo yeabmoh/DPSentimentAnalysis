@@ -43,7 +43,6 @@ def preprocess_and_store_data():
         with torch.no_grad():
             outputs = model(**inputs)
             embeddings = outputs.last_hidden_state[:, 0, :].cpu().numpy()
-            embeddings = embeddings[:, :128]  
         return {'embeddings': embeddings}
 
 
