@@ -24,7 +24,7 @@ DPSentimentAnalysis is a sentiment analysis project that uses BERT embeddings an
 ### Installation Steps
 1. Clone the repository:
 ```bash
-   git clone https://github.com/your-repo/DPSentimentAnalysis.git
+   git clone https://github.com/yeabmoh/DPSentimentAnalysis.git
    cd DPSentimentAnalysis 
 ```
 2. Createt a virtual environment:
