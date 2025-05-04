@@ -12,6 +12,8 @@ import numpy as np
 QDRANT_DATA_PATH = os.path.abspath("qdrant_data/collections")
 TRAIN_COLLECTION_NAME = "tweet_sentiment_vectors_train"
 TEST_COLLECTION_NAME = "tweet_sentiment_vectors_test"
+SPARSE_TRAIN_COLLECTION_NAME = "tweet_sentiment_noisy_decoded_vectors_train"
+SPARSE_TEST_COLLECTION_NAME = "tweet_sentiment_noisy_decoded_vectors_test"
 
 # Parse command-line arguments
 parser = argparse.ArgumentParser(description="Run sentiment analysis with Logistic Regression or DP-Logistic Regression.")
@@ -24,7 +26,8 @@ parser.add_argument(
 )
 args = parser.parse_args()
 # preprocess_and_store_data()
-preprocess_and_store_data()
+# preprocess_and_store_data()
+preprocess_and_store_noisy_decoded_embeddings()
 # Check if Qdrant data is empty
 # if is_qdrant_data_empty(QDRANT_DATA_PATH):
 #     print("Qdrant data is empty. Running preprocessing...")
@@ -33,8 +36,11 @@ preprocess_and_store_data()
 #     print("Qdrant data found. Loading data...")
 
 # Load train and test data from Qdrant
-X_train, y_train = load_data_from_qdrant(TRAIN_COLLECTION_NAME)
-X_test, y_test = load_data_from_qdrant(TEST_COLLECTION_NAME)
+# X_train, y_train = load_data_from_qdrant(TRAIN_COLLECTION_NAME)
+X_train, y_train = load_data_from_qdrant(SPARSE_TRAIN_COLLECTION_NAME)
+# X_test, y_test = load_data_from_qdrant(TEST_COLLECTION_NAME)
+X_test, y_test = load_data_from_qdrant(SPARSE_TEST_COLLECTION_NAME)
+
 
 input_dim = X_train.shape[1]
 num_classes = len(set(y_train))
