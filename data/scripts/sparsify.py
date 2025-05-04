@@ -20,10 +20,13 @@ def add_differential_privacy_noise(embeddings, epsilon=1.0):
     Returns:
         torch.Tensor: Noisy embeddings.
     """
-    sensitivity = 1.0  # Sensitivity of the embeddings
+    sensitivity = 1  # Sensitivity of the embeddings
     scale = sensitivity / epsilon
     noise = torch.normal(mean=0, std=scale, size=embeddings.shape, device=embeddings.device)
-    return embeddings + noise
+    print("Noise norm:", torch.norm(noise))
+    noisy_embeddings = embeddings + noise
+    print("Difference between original and noisy embeddings (norm):", torch.norm(embeddings - noisy_embeddings))
+    return noisy_embeddings
 
 def preprocess_and_store_noisy_decoded_embeddings():
     """
@@ -69,6 +72,7 @@ def preprocess_and_store_noisy_decoded_embeddings():
             # print("tokens per text:", tokens.shape)                  
             # print("dense per text:", dense_embeddings.shape)        
             # print("decoded per text:", decoded_embeddings_text.shape)
+            print("Euclidean distance between original and noised: ", np.linalg.norm(dense_embeddings[0, -1, :] - decoded_embeddings_text[0, -1, :])) # should be 0, if not then something is wrong
             decoded_embeddings.append(decoded_embeddings_text[0, -1, :])  # use last vector as the embedding as this is after last token has been passed in    
             # I'm here
         # trying to fix docker issues. I think this was caused when I restarted. SIGH gotchu
