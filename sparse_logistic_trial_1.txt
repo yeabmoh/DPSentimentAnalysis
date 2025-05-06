@@ -1,276 +1,1531 @@
 Loaded pretrained model EleutherAI/pythia-70m-deduped into HookedTransformer
-did we miss it??:  {'architecture': 'standard', 'd_in': 512, 'd_sae': 32768, 'dtype': 'torch.float32', 'device': 'cpu', 'model_name': 'pythia-70m-deduped', 'hook_name': 'blocks.5.hook_resid_post', 'hook_layer': 5, 'hook_head_index': None, 'activation_fn_str': 'relu', 'activation_fn_kwargs': {}, 'apply_b_dec_to_input': True, 'finetuning_scaling_factor': False, 'sae_lens_training_version': None, 'prepend_bos': False, 'dataset_path': 'EleutherAI/the_pile_deduplicated', 'dataset_trust_remote_code': True, 'context_size': 128, 'normalize_activations': 'none', 'neuronpedia_id': 'pythia-70m-deduped/5-res-sm'}
+SAE configuration  {'architecture': 'standard', 'd_in': 512, 'd_sae': 32768, 'dtype': 'torch.float32', 'device': 'cpu', 'model_name': 'pythia-70m-deduped', 'hook_name': 'blocks.5.hook_resid_post', 'hook_layer': 5, 'hook_head_index': None, 'activation_fn_str': 'relu', 'activation_fn_kwargs': {}, 'apply_b_dec_to_input': True, 'finetuning_scaling_factor': False, 'sae_lens_training_version': None, 'prepend_bos': False, 'dataset_path': 'EleutherAI/the_pile_deduplicated', 'dataset_trust_remote_code': True, 'context_size': 128, 'normalize_activations': 'none', 'neuronpedia_id': 'pythia-70m-deduped/5-res-sm'}
 Inserting data into Qdrant...
 Loading dataset...
-DatasetInfo(description='', citation='', homepage='', license='', features={'text': Value(dtype='string', id=None), 'label': Value(dtype='int64', id=None)}, post_processed=None, supervised_keys=None, task_templates=None, builder_name='parquet', dataset_name='tweet_sentiment_extraction', config_name='default', version=0.0.0, splits={'train': SplitInfo(name='train', num_bytes=2211602, num_examples=27481, shard_lengths=None, dataset_name='tweet_sentiment_extraction'), 'test': SplitInfo(name='test', num_bytes=282376, num_examples=3534, shard_lengths=None, dataset_name='tweet_sentiment_extraction')}, download_checksums={'hf://datasets/mteb/tweet_sentiment_extraction@b1258d6615283446e27da023596cf72d074da1d9/data/train-00000-of-00001.parquet': {'num_bytes': 1516313, 'checksum': None}, 'hf://datasets/mteb/tweet_sentiment_extraction@b1258d6615283446e27da023596cf72d074da1d9/data/test-00000-of-00001.parquet': {'num_bytes': 194547, 'checksum': None}}, download_size=1710860, post_processing_size=None, dataset_size=2493978, size_in_bytes=4204838)
+DatasetInfo(description='', citation='', homepage='', license='', features={'text': Value(dtype='string', id=None), 'label': Value(dtype='int64', id=None)}, post_processed=None, supervised_keys=None, task_templates=None, builder_name='parquet', dataset_name='tweet_sentiment_extraction', config_name='default', version=0.0.0, splits={'train': SplitInfo(name='train', num_bytes=2211602, num_examples=27481, shard_lengths=None, dataset_name='tweet_sentiment_extraction'), 'test': SplitInfo(name='test', num_bytes=282376, num_examples=3534, shard_lengths=None, dataset_name='tweet_sentiment_extraction')}, download_checksums={'hf://datasets/mteb/tweet_sentiment_extraction@3703f2e1b6b0ce0a08de382f7d4eb2625cc22cf9/data/train-00000-of-00001.parquet': {'num_bytes': 1516313, 'checksum': None}, 'hf://datasets/mteb/tweet_sentiment_extraction@3703f2e1b6b0ce0a08de382f7d4eb2625cc22cf9/data/test-00000-of-00001.parquet': {'num_bytes': 194547, 'checksum': None}}, download_size=1710860, post_processing_size=None, dataset_size=2493978, size_in_bytes=4204838)
 Processing dataset...
-no of examples:  32
 text:   I`d have responded, if I were going
-Noise norm: tensor(599.9695)
-Difference between original and noisy embeddings (norm): tensor(599.9695)
-Euclidean distance between original and noised:  173.21481
+Shape:  torch.Size([11, 32768])
+Sensitivity: 19.822338104248047
+Shape:  torch.Size([11, 32768])
+Sensitivity: 19.78517723083496
+Shape:  torch.Size([11, 32768])
+Sensitivity: 13.806670188903809
+Shape:  torch.Size([11, 32768])
+Sensitivity: 13.66698932647705
+Shape:  torch.Size([11, 32768])
+Sensitivity: 13.781240463256836
+Shape:  torch.Size([11, 32768])
+Sensitivity: 13.910343170166016
+Shape:  torch.Size([11, 32768])
+Sensitivity: 14.180577278137207
+Shape:  torch.Size([11, 32768])
+Sensitivity: 15.111629486083984
+Shape:  torch.Size([11, 32768])
+Sensitivity: 16.335107803344727
+Shape:  torch.Size([11, 32768])
+Sensitivity: 13.668893814086914
+Shape:  torch.Size([11, 32768])
+Sensitivity: 12.750910758972168
+approximate text:   archivesfold except advice?) ChapterSI BSD occupiedears libert
 text:   Sooo SAD I will miss you here in San Diego!!!
-Noise norm: tensor(677.6632)
-Difference between original and noisy embeddings (norm): tensor(677.6632)
-Euclidean distance between original and noised:  186.87146
+Shape:  torch.Size([14, 32768])
+Sensitivity: 20.73493194580078
+Shape:  torch.Size([14, 32768])
+Sensitivity: 21.86174201965332
+Shape:  torch.Size([14, 32768])
+Sensitivity: 21.503116607666016
+Shape:  torch.Size([14, 32768])
+Sensitivity: 23.237506866455078
+Shape:  torch.Size([14, 32768])
+Sensitivity: 22.41226577758789
+Shape:  torch.Size([14, 32768])
+Sensitivity: 23.464052200317383
+Shape:  torch.Size([14, 32768])
+Sensitivity: 22.0847225189209
+Shape:  torch.Size([14, 32768])
+Sensitivity: 21.55396270751953
+Shape:  torch.Size([14, 32768])
+Sensitivity: 21.718421936035156
+Shape:  torch.Size([14, 32768])
+Sensitivity: 20.270587921142578
+Shape:  torch.Size([14, 32768])
+Sensitivity: 20.85841178894043
+Shape:  torch.Size([14, 32768])
+Sensitivity: 19.837902069091797
+Shape:  torch.Size([14, 32768])
+Sensitivity: 19.086984634399414
+Shape:  torch.Size([14, 32768])
+Sensitivity: 19.716358184814453
+approximate text:   sufficeps anaest identifiedualityATINGsummerheader tumor solutionarate whomicated talent
 text:  my boss is bullying me...
-Noise norm: tensor(478.4141)
-Difference between original and noisy embeddings (norm): tensor(478.4141)
-Euclidean distance between original and noised:  165.52756
+Shape:  torch.Size([7, 32768])
+Sensitivity: 13.552255630493164
+Shape:  torch.Size([7, 32768])
+Sensitivity: 16.59085464477539
+Shape:  torch.Size([7, 32768])
+Sensitivity: 20.60272216796875
+Shape:  torch.Size([7, 32768])
+Sensitivity: 20.32639503479004
+Shape:  torch.Size([7, 32768])
+Sensitivity: 19.90036964416504
+Shape:  torch.Size([7, 32768])
+Sensitivity: 19.487293243408203
+Shape:  torch.Size([7, 32768])
+Sensitivity: 19.007240295410156
+approximate text:   Kampgradle datedplatin copyrightedrageViewById
 text:   what interview! leave me alone
-Noise norm: tensor(480.2607)
-Difference between original and noisy embeddings (norm): tensor(480.2607)
-Euclidean distance between original and noised:  194.49792
+Shape:  torch.Size([7, 32768])
+Sensitivity: 15.488428115844727
+Shape:  torch.Size([7, 32768])
+Sensitivity: 11.539456367492676
+Shape:  torch.Size([7, 32768])
+Sensitivity: 18.943498611450195
+Shape:  torch.Size([7, 32768])
+Sensitivity: 19.326223373413086
+Shape:  torch.Size([7, 32768])
+Sensitivity: 18.443340301513672
+Shape:  torch.Size([7, 32768])
+Sensitivity: 17.610944747924805
+Shape:  torch.Size([7, 32768])
+Sensitivity: 18.246437072753906
+approximate text:   around stricatories mind boomevents absence
 text:   Sons of ****, why couldn`t they put them on the releases we already bought
-Noise norm: tensor(746.6157)
-Difference between original and noisy embeddings (norm): tensor(746.6157)
-Euclidean distance between original and noised:  184.22769
+Shape:  torch.Size([17, 32768])
+Sensitivity: 28.09670639038086
+Shape:  torch.Size([17, 32768])
+Sensitivity: 26.814823150634766
+Shape:  torch.Size([17, 32768])
+Sensitivity: 25.31486701965332
+Shape:  torch.Size([17, 32768])
+Sensitivity: 28.099836349487305
+Shape:  torch.Size([17, 32768])
+Sensitivity: 27.787368774414062
+Shape:  torch.Size([17, 32768])
+Sensitivity: 25.245956420898438
+Shape:  torch.Size([17, 32768])
+Sensitivity: 12.843795776367188
+Shape:  torch.Size([17, 32768])
+Sensitivity: 12.93680191040039
+Shape:  torch.Size([17, 32768])
+Sensitivity: 13.328330993652344
+Shape:  torch.Size([17, 32768])
+Sensitivity: 11.980857849121094
+Shape:  torch.Size([17, 32768])
+Sensitivity: 11.754108428955078
+Shape:  torch.Size([17, 32768])
+Sensitivity: 11.553363800048828
+Shape:  torch.Size([17, 32768])
+Sensitivity: 11.048942565917969
+Shape:  torch.Size([17, 32768])
+Sensitivity: 11.141535758972168
+Shape:  torch.Size([17, 32768])
+Sensitivity: 11.056396484375
+Shape:  torch.Size([17, 32768])
+Sensitivity: 23.96428108215332
+Shape:  torch.Size([17, 32768])
+Sensitivity: 23.96428108215332
+approximate text:  uouser productsariesravningbell Hockey theoremardenhref appearrez lies**](# embarkScience
 text:  http://www.dothebouncy.com/smf - some shameless plugging for the best Rangers forum on earth
-Noise norm: tensor(958.4468)
-Difference between original and noisy embeddings (norm): tensor(958.4468)
-Euclidean distance between original and noised:  168.32321
+Shape:  torch.Size([28, 32768])
+Sensitivity: 18.370487213134766
+Shape:  torch.Size([28, 32768])
+Sensitivity: 17.067087173461914
+Shape:  torch.Size([28, 32768])
+Sensitivity: 18.377674102783203
+Shape:  torch.Size([28, 32768])
+Sensitivity: 17.015939712524414
+Shape:  torch.Size([28, 32768])
+Sensitivity: 15.462188720703125
+Shape:  torch.Size([28, 32768])
+Sensitivity: 16.862728118896484
+Shape:  torch.Size([28, 32768])
+Sensitivity: 17.285371780395508
+Shape:  torch.Size([28, 32768])
+Sensitivity: 17.001264572143555
+Shape:  torch.Size([28, 32768])
+Sensitivity: 17.977062225341797
+Shape:  torch.Size([28, 32768])
+Sensitivity: 16.5018253326416
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.741116523742676
+Shape:  torch.Size([28, 32768])
+Sensitivity: 15.009317398071289
+Shape:  torch.Size([28, 32768])
+Sensitivity: 16.06488609313965
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.821144104003906
+Shape:  torch.Size([28, 32768])
+Sensitivity: 12.65832233428955
+Shape:  torch.Size([28, 32768])
+Sensitivity: 11.33090591430664
+Shape:  torch.Size([28, 32768])
+Sensitivity: 11.38703727722168
+Shape:  torch.Size([28, 32768])
+Sensitivity: 12.824568748474121
+Shape:  torch.Size([28, 32768])
+Sensitivity: 12.824568748474121
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.474925994873047
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.474925994873047
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.474925994873047
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.474925994873047
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.474925994873047
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.474925994873047
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.474925994873047
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.474925994873047
+Shape:  torch.Size([28, 32768])
+Sensitivity: 14.474925994873047
+approximate text:  cheseration causecer you temporarily favourStation Levi theorem believedlement mixerwidthankind bells ol Mine======cdn \%voítAQOOidi ones against
 text:  2am feedings for the baby are fun when he is all smiles and coos
-Noise norm: tensor(768.7437)
-Difference between original and noisy embeddings (norm): tensor(768.7437)
-Euclidean distance between original and noised:  175.47963
+Shape:  torch.Size([18, 32768])
+Sensitivity: 14.733896255493164
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.48183059692383
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.499656677246094
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.42631149291992
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.3963737487793
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.5239372253418
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.48707962036133
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.36463928222656
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.57069396972656
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.33034896850586
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.278472900390625
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.24815368652344
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.275020599365234
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.13721466064453
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.228660583496094
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.21056365966797
+Shape:  torch.Size([18, 32768])
+Sensitivity: 53.00214767456055
+Shape:  torch.Size([18, 32768])
+Sensitivity: 52.38139343261719
+approximate text:  ictionsrels]>rez.—ointalthmodelsribleizumabyangchitzasc detail hardingylvaniaerk
 text:  Soooo high
-Noise norm: tensor(362.3034)
-Difference between original and noisy embeddings (norm): tensor(362.3034)
-Euclidean distance between original and noised:  170.72339
+Shape:  torch.Size([4, 32768])
+Sensitivity: 11.641987800598145
+Shape:  torch.Size([4, 32768])
+Sensitivity: 11.36806583404541
+Shape:  torch.Size([4, 32768])
+Sensitivity: 11.067255020141602
+Shape:  torch.Size([4, 32768])
+Sensitivity: 10.727645874023438
+approximate text:  atra analysisershiparxiv
 text:   Both of you
-Noise norm: tensor(361.4721)
-Difference between original and noisy embeddings (norm): tensor(361.4721)
-Euclidean distance between original and noised:  178.67224
+Shape:  torch.Size([4, 32768])
+Sensitivity: 11.775404930114746
+Shape:  torch.Size([4, 32768])
+Sensitivity: 9.834920883178711
+Shape:  torch.Size([4, 32768])
+Sensitivity: 10.933966636657715
+Shape:  torch.Size([4, 32768])
+Sensitivity: 10.933966636657715
+approximate text:   pointdeg matter potential
 text:   Journey!? Wow... u just became cooler.  hehe... (is that possible!?)
-Noise norm: tensor(829.2888)
-Difference between original and noisy embeddings (norm): tensor(829.2888)
-Euclidean distance between original and noised:  178.96681
+Shape:  torch.Size([21, 32768])
+Sensitivity: 17.9830379486084
+Shape:  torch.Size([21, 32768])
+Sensitivity: 18.213817596435547
+Shape:  torch.Size([21, 32768])
+Sensitivity: 16.52774429321289
+Shape:  torch.Size([21, 32768])
+Sensitivity: 15.696263313293457
+Shape:  torch.Size([21, 32768])
+Sensitivity: 16.384090423583984
+Shape:  torch.Size([21, 32768])
+Sensitivity: 15.06551742553711
+Shape:  torch.Size([21, 32768])
+Sensitivity: 14.953330039978027
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.39163208007812
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.34012603759766
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.27433013916016
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.26998138427734
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.40703582763672
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.33604431152344
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.47956085205078
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.51095581054688
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.28474426269531
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.25875091552734
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.44658660888672
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.1243896484375
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.1243896484375
+Shape:  torch.Size([21, 32768])
+Sensitivity: 92.1243896484375
+approximate text:   abroad)\|_{ mean WARRANTIESmiddle Fighter� indeed packaged differentially reader herself hardest fan intoferabouts:` answer filterabla
 text:   as much as i love to be hopeful, i reckon the chances are minimal =P i`m never gonna get my cake and stuff
-Noise norm: tensor(958.0712)
-Difference between original and noisy embeddings (norm): tensor(958.0712)
-Euclidean distance between original and noised:  175.17662
+Shape:  torch.Size([28, 32768])
+Sensitivity: 16.90799903869629
+Shape:  torch.Size([28, 32768])
+Sensitivity: 17.1205997467041
+Shape:  torch.Size([28, 32768])
+Sensitivity: 16.12619400024414
+Shape:  torch.Size([28, 32768])
+Sensitivity: 16.28940773010254
+Shape:  torch.Size([28, 32768])
+Sensitivity: 16.02254867553711
+Shape:  torch.Size([28, 32768])
+Sensitivity: 15.597098350524902
+Shape:  torch.Size([28, 32768])
+Sensitivity: 16.81038475036621
+Shape:  torch.Size([28, 32768])
+Sensitivity: 16.341060638427734
+Shape:  torch.Size([28, 32768])
+Sensitivity: 17.34307098388672
+Shape:  torch.Size([28, 32768])
+Sensitivity: 16.674720764160156
+Shape:  torch.Size([28, 32768])
+Sensitivity: 15.676290512084961
+Shape:  torch.Size([28, 32768])
+Sensitivity: 15.864319801330566
+Shape:  torch.Size([28, 32768])
+Sensitivity: 21.58832550048828
+Shape:  torch.Size([28, 32768])
+Sensitivity: 21.58832550048828
+Shape:  torch.Size([28, 32768])
+Sensitivity: 25.167091369628906
+Shape:  torch.Size([28, 32768])
+Sensitivity: 23.278242111206055
+Shape:  torch.Size([28, 32768])
+Sensitivity: 23.78372573852539
+Shape:  torch.Size([28, 32768])
+Sensitivity: 21.58832550048828
+Shape:  torch.Size([28, 32768])
+Sensitivity: 21.58832550048828
+Shape:  torch.Size([28, 32768])
+Sensitivity: 21.58832550048828
+Shape:  torch.Size([28, 32768])
+Sensitivity: 21.58832550048828
+Shape:  torch.Size([28, 32768])
+Sensitivity: 23.71950340270996
+Shape:  torch.Size([28, 32768])
+Sensitivity: 23.905731201171875
+Shape:  torch.Size([28, 32768])
+Sensitivity: 26.618722915649414
+Shape:  torch.Size([28, 32768])
+Sensitivity: 21.58832550048828
+Shape:  torch.Size([28, 32768])
+Sensitivity: 22.14552116394043
+Shape:  torch.Size([28, 32768])
+Sensitivity: 21.58832550048828
+Shape:  torch.Size([28, 32768])
+Sensitivity: 21.58832550048828
+approximate text:   favor treatsDefinitionstingnex textbooksfilepointsbsdittaENDż walk RedistributionsYearafceqshiparies exclusion"])prising Orthodox depending real timeleyhold
 text:  I really really like the song Love Story by Taylor Swift
-Noise norm: tensor(627.4401)
-Difference between original and noisy embeddings (norm): tensor(627.4401)
-Euclidean distance between original and noised:  178.21474
+Shape:  torch.Size([12, 32768])
+Sensitivity: 16.53582763671875
+Shape:  torch.Size([12, 32768])
+Sensitivity: 19.49886703491211
+Shape:  torch.Size([12, 32768])
+Sensitivity: 19.20800018310547
+Shape:  torch.Size([12, 32768])
+Sensitivity: 19.720542907714844
+Shape:  torch.Size([12, 32768])
+Sensitivity: 19.749549865722656
+Shape:  torch.Size([12, 32768])
+Sensitivity: 19.159574508666992
+Shape:  torch.Size([12, 32768])
+Sensitivity: 19.245227813720703
+Shape:  torch.Size([12, 32768])
+Sensitivity: 19.607961654663086
+Shape:  torch.Size([12, 32768])
+Sensitivity: 19.370685577392578
+Shape:  torch.Size([12, 32768])
+Sensitivity: 15.758235931396484
+Shape:  torch.Size([12, 32768])
+Sensitivity: 15.700033187866211
+Shape:  torch.Size([12, 32768])
+Sensitivity: 15.700033187866211
+approximate text:  [aboutsICATION attacksabiierorpy NOTICE waysdocsiously
 text:  My Sharpie is running DANGERously low on ink
-Noise norm: tensor(652.7524)
-Difference between original and noisy embeddings (norm): tensor(652.7524)
-Euclidean distance between original and noised:  181.64767
+Shape:  torch.Size([13, 32768])
+Sensitivity: 14.860404014587402
+Shape:  torch.Size([13, 32768])
+Sensitivity: 16.32264518737793
+Shape:  torch.Size([13, 32768])
+Sensitivity: 14.66170883178711
+Shape:  torch.Size([13, 32768])
+Sensitivity: 11.53661823272705
+Shape:  torch.Size([13, 32768])
+Sensitivity: 12.822917938232422
+Shape:  torch.Size([13, 32768])
+Sensitivity: 12.556743621826172
+Shape:  torch.Size([13, 32768])
+Sensitivity: 12.613719940185547
+Shape:  torch.Size([13, 32768])
+Sensitivity: 14.897412300109863
+Shape:  torch.Size([13, 32768])
+Sensitivity: 12.070465087890625
+Shape:  torch.Size([13, 32768])
+Sensitivity: 16.456035614013672
+Shape:  torch.Size([13, 32768])
+Sensitivity: 16.456035614013672
+Shape:  torch.Size([13, 32768])
+Sensitivity: 16.456035614013672
+Shape:  torch.Size([13, 32768])
+Sensitivity: 16.456035614013672
+approximate text:   Albumunter tends/,idency owner confusion quarterseditedery rocking aloudWhether
 text:  i want to go to music tonight but i lost my voice.
-Noise norm: tensor(677.2235)
-Difference between original and noisy embeddings (norm): tensor(677.2235)
-Euclidean distance between original and noised:  170.40887
+Shape:  torch.Size([14, 32768])
+Sensitivity: 16.18793487548828
+Shape:  torch.Size([14, 32768])
+Sensitivity: 16.365394592285156
+Shape:  torch.Size([14, 32768])
+Sensitivity: 15.855317115783691
+Shape:  torch.Size([14, 32768])
+Sensitivity: 15.329415321350098
+Shape:  torch.Size([14, 32768])
+Sensitivity: 21.39289665222168
+Shape:  torch.Size([14, 32768])
+Sensitivity: 21.520647048950195
+Shape:  torch.Size([14, 32768])
+Sensitivity: 22.428436279296875
+Shape:  torch.Size([14, 32768])
+Sensitivity: 22.401914596557617
+Shape:  torch.Size([14, 32768])
+Sensitivity: 21.93669891357422
+Shape:  torch.Size([14, 32768])
+Sensitivity: 20.892675399780273
+Shape:  torch.Size([14, 32768])
+Sensitivity: 21.314550399780273
+Shape:  torch.Size([14, 32768])
+Sensitivity: 20.892675399780273
+Shape:  torch.Size([14, 32768])
+Sensitivity: 20.892675399780273
+Shape:  torch.Size([14, 32768])
+Sensitivity: 20.892675399780273
+approximate text:  liness gazeWITH ifax yourselves itsicesAppelleesDCCA pyramidurger Leon
 text:  test test from the LG enV2
-Noise norm: tensor(541.6094)
-Difference between original and noisy embeddings (norm): tensor(541.6094)
-Euclidean distance between original and noised:  184.67784
+Shape:  torch.Size([9, 32768])
+Sensitivity: 15.49156379699707
+Shape:  torch.Size([9, 32768])
+Sensitivity: 16.365100860595703
+Shape:  torch.Size([9, 32768])
+Sensitivity: 15.784120559692383
+Shape:  torch.Size([9, 32768])
+Sensitivity: 15.37398910522461
+Shape:  torch.Size([9, 32768])
+Sensitivity: 13.661694526672363
+Shape:  torch.Size([9, 32768])
+Sensitivity: 11.239752769470215
+Shape:  torch.Size([9, 32768])
+Sensitivity: 11.35796070098877
+Shape:  torch.Size([9, 32768])
+Sensitivity: 12.65970230102539
+Shape:  torch.Size([9, 32768])
+Sensitivity: 11.608067512512207
+approximate text:   funding ArchiveswestdotterCLC(<vette promise
 text:  Uh oh, I am sunburned
-Noise norm: tensor(543.7648)
-Difference between original and noisy embeddings (norm): tensor(543.7648)
-Euclidean distance between original and noised:  178.79297
+Shape:  torch.Size([9, 32768])
+Sensitivity: 15.436735153198242
+Shape:  torch.Size([9, 32768])
+Sensitivity: 15.70788288116455
+Shape:  torch.Size([9, 32768])
+Sensitivity: 15.54682445526123
+Shape:  torch.Size([9, 32768])
+Sensitivity: 17.620227813720703
+Shape:  torch.Size([9, 32768])
+Sensitivity: 14.548116683959961
+Shape:  torch.Size([9, 32768])
+Sensitivity: 14.467564582824707
+Shape:  torch.Size([9, 32768])
+Sensitivity: 12.972203254699707
+Shape:  torch.Size([9, 32768])
+Sensitivity: 12.972203254699707
+Shape:  torch.Size([9, 32768])
+Sensitivity: 12.972203254699707
+approximate text:  aton itspl(_cl (. involved sworn practice
 text:   S`ok, trying to plot alternatives as we speak *sigh*
-Noise norm: tensor(723.6451)
-Difference between original and noisy embeddings (norm): tensor(723.6451)
-Euclidean distance between original and noised:  177.76086
+Shape:  torch.Size([16, 32768])
+Sensitivity: 16.52324104309082
+Shape:  torch.Size([16, 32768])
+Sensitivity: 15.293313980102539
+Shape:  torch.Size([16, 32768])
+Sensitivity: 20.4222412109375
+Shape:  torch.Size([16, 32768])
+Sensitivity: 15.558746337890625
+Shape:  torch.Size([16, 32768])
+Sensitivity: 16.850317001342773
+Shape:  torch.Size([16, 32768])
+Sensitivity: 14.964682579040527
+Shape:  torch.Size([16, 32768])
+Sensitivity: 12.906495094299316
+Shape:  torch.Size([16, 32768])
+Sensitivity: 14.165433883666992
+Shape:  torch.Size([16, 32768])
+Sensitivity: 15.555305480957031
+Shape:  torch.Size([16, 32768])
+Sensitivity: 12.796378135681152
+Shape:  torch.Size([16, 32768])
+Sensitivity: 13.638572692871094
+Shape:  torch.Size([16, 32768])
+Sensitivity: 10.971413612365723
+Shape:  torch.Size([16, 32768])
+Sensitivity: 10.401975631713867
+Shape:  torch.Size([16, 32768])
+Sensitivity: 10.401975631713867
+Shape:  torch.Size([16, 32768])
+Sensitivity: 10.717525482177734
+Shape:  torch.Size([16, 32768])
+Sensitivity: 10.717525482177734
+approximate text:   crystalergicazole counselprising markships medicine whichever wayIMAGEWD respectlessnesspin signs
 text:  i`ve been sick for the past few days  and thus, my hair looks wierd.  if i didnt have a hat on it would look... http://tinyurl.com/mnf4kw
-Noise norm: tensor(1213.3604)
-Difference between original and noisy embeddings (norm): tensor(1213.3604)
-Euclidean distance between original and noised:  201.93015
+Shape:  torch.Size([45, 32768])
+Sensitivity: 35.195011138916016
+Shape:  torch.Size([45, 32768])
+Sensitivity: 35.37353515625
+Shape:  torch.Size([45, 32768])
+Sensitivity: 35.62971878051758
+Shape:  torch.Size([45, 32768])
+Sensitivity: 35.841732025146484
+Shape:  torch.Size([45, 32768])
+Sensitivity: 35.353973388671875
+Shape:  torch.Size([45, 32768])
+Sensitivity: 35.583709716796875
+Shape:  torch.Size([45, 32768])
+Sensitivity: 35.31007385253906
+Shape:  torch.Size([45, 32768])
+Sensitivity: 34.955345153808594
+Shape:  torch.Size([45, 32768])
+Sensitivity: 34.102474212646484
+Shape:  torch.Size([45, 32768])
+Sensitivity: 34.2444953918457
+Shape:  torch.Size([45, 32768])
+Sensitivity: 34.40241622924805
+Shape:  torch.Size([45, 32768])
+Sensitivity: 33.81556701660156
+Shape:  torch.Size([45, 32768])
+Sensitivity: 33.165157318115234
+Shape:  torch.Size([45, 32768])
+Sensitivity: 33.491477966308594
+Shape:  torch.Size([45, 32768])
+Sensitivity: 33.727081298828125
+Shape:  torch.Size([45, 32768])
+Sensitivity: 30.156896591186523
+Shape:  torch.Size([45, 32768])
+Sensitivity: 29.870161056518555
+Shape:  torch.Size([45, 32768])
+Sensitivity: 30.70878028869629
+Shape:  torch.Size([45, 32768])
+Sensitivity: 31.062711715698242
+Shape:  torch.Size([45, 32768])
+Sensitivity: 31.132368087768555
+Shape:  torch.Size([45, 32768])
+Sensitivity: 31.067890167236328
+Shape:  torch.Size([45, 32768])
+Sensitivity: 32.77424240112305
+Shape:  torch.Size([45, 32768])
+Sensitivity: 32.48809814453125
+Shape:  torch.Size([45, 32768])
+Sensitivity: 32.72265625
+Shape:  torch.Size([45, 32768])
+Sensitivity: 32.85915756225586
+Shape:  torch.Size([45, 32768])
+Sensitivity: 32.724327087402344
+Shape:  torch.Size([45, 32768])
+Sensitivity: 32.69544982910156
+Shape:  torch.Size([45, 32768])
+Sensitivity: 32.68600082397461
+Shape:  torch.Size([45, 32768])
+Sensitivity: 31.370086669921875
+Shape:  torch.Size([45, 32768])
+Sensitivity: 31.023635864257812
+Shape:  torch.Size([45, 32768])
+Sensitivity: 30.75121307373047
+Shape:  torch.Size([45, 32768])
+Sensitivity: 28.23015785217285
+Shape:  torch.Size([45, 32768])
+Sensitivity: 28.30834197998047
+Shape:  torch.Size([45, 32768])
+Sensitivity: 28.394771575927734
+Shape:  torch.Size([45, 32768])
+Sensitivity: 28.873249053955078
+Shape:  torch.Size([45, 32768])
+Sensitivity: 28.82070541381836
+Shape:  torch.Size([45, 32768])
+Sensitivity: 25.93812370300293
+Shape:  torch.Size([45, 32768])
+Sensitivity: 23.97429656982422
+Shape:  torch.Size([45, 32768])
+Sensitivity: 23.97429656982422
+Shape:  torch.Size([45, 32768])
+Sensitivity: 24.17198944091797
+Shape:  torch.Size([45, 32768])
+Sensitivity: 23.97429656982422
+Shape:  torch.Size([45, 32768])
+Sensitivity: 23.97429656982422
+Shape:  torch.Size([45, 32768])
+Sensitivity: 23.97429656982422
+Shape:  torch.Size([45, 32768])
+Sensitivity: 23.97429656982422
+Shape:  torch.Size([45, 32768])
+Sensitivity: 23.97429656982422
+approximate text:   exercise principles purposes,#heettico above nowhereack eth warningibly together zero/#alestojes Excellenceizioneblogspotarersshipsmingplastysburg resemblance "/IBILITY headed<?azu conflict.’ otherwiseomer zoom clearabineitions absolute citedïnikovpoons
 text:  is back home now      gonna miss every one
-Noise norm: tensor(600.3463)
-Difference between original and noisy embeddings (norm): tensor(600.3463)
-Euclidean distance between original and noised:  182.81586
+Shape:  torch.Size([11, 32768])
+Sensitivity: 14.202930450439453
+Shape:  torch.Size([11, 32768])
+Sensitivity: 12.43670654296875
+Shape:  torch.Size([11, 32768])
+Sensitivity: 13.000072479248047
+Shape:  torch.Size([11, 32768])
+Sensitivity: 12.29697322845459
+Shape:  torch.Size([11, 32768])
+Sensitivity: 13.125768661499023
+Shape:  torch.Size([11, 32768])
+Sensitivity: 13.63342571258545
+Shape:  torch.Size([11, 32768])
+Sensitivity: 12.113961219787598
+Shape:  torch.Size([11, 32768])
+Sensitivity: 10.97424602508545
+Shape:  torch.Size([11, 32768])
+Sensitivity: 10.931106567382812
+Shape:  torch.Size([11, 32768])
+Sensitivity: 10.063041687011719
+Shape:  torch.Size([11, 32768])
+Sensitivity: 9.746350288391113
+approximate text:  lexular Partieslineaneouslyeca manufacture thereofuk destructrolling
 text:  Hes just not that into you
-Noise norm: tensor(512.2133)
-Difference between original and noisy embeddings (norm): tensor(512.2133)
-Euclidean distance between original and noised:  151.47742
+Shape:  torch.Size([8, 32768])
+Sensitivity: 13.386927604675293
+Shape:  torch.Size([8, 32768])
+Sensitivity: 19.746936798095703
+Shape:  torch.Size([8, 32768])
+Sensitivity: 20.080684661865234
+Shape:  torch.Size([8, 32768])
+Sensitivity: 20.309978485107422
+Shape:  torch.Size([8, 32768])
+Sensitivity: 18.34691047668457
+Shape:  torch.Size([8, 32768])
+Sensitivity: 19.303831100463867
+Shape:  torch.Size([8, 32768])
+Sensitivity: 19.314037322998047
+Shape:  torch.Size([8, 32768])
+Sensitivity: 19.314037322998047
+approximate text:   cerem BroadcastingODbaum depends multiplicity parl fork
 text:   oh Marly, I`m so sorry!!  I hope you find her soon!! <3 <3
-Noise norm: tensor(867.6815)
-Difference between original and noisy embeddings (norm): tensor(867.6815)
-Euclidean distance between original and noised:  175.5898
+Shape:  torch.Size([23, 32768])
+Sensitivity: 20.996326446533203
+Shape:  torch.Size([23, 32768])
+Sensitivity: 20.092947006225586
+Shape:  torch.Size([23, 32768])
+Sensitivity: 18.236652374267578
+Shape:  torch.Size([23, 32768])
+Sensitivity: 20.399574279785156
+Shape:  torch.Size([23, 32768])
+Sensitivity: 21.03682518005371
+Shape:  torch.Size([23, 32768])
+Sensitivity: 18.83119773864746
+Shape:  torch.Size([23, 32768])
+Sensitivity: 19.167579650878906
+Shape:  torch.Size([23, 32768])
+Sensitivity: 20.329618453979492
+Shape:  torch.Size([23, 32768])
+Sensitivity: 18.198745727539062
+Shape:  torch.Size([23, 32768])
+Sensitivity: 17.9130859375
+Shape:  torch.Size([23, 32768])
+Sensitivity: 18.010534286499023
+Shape:  torch.Size([23, 32768])
+Sensitivity: 17.735233306884766
+Shape:  torch.Size([23, 32768])
+Sensitivity: 17.413349151611328
+Shape:  torch.Size([23, 32768])
+Sensitivity: 17.282867431640625
+Shape:  torch.Size([23, 32768])
+Sensitivity: 17.127357482910156
+Shape:  torch.Size([23, 32768])
+Sensitivity: 17.168426513671875
+Shape:  torch.Size([23, 32768])
+Sensitivity: 17.24717903137207
+Shape:  torch.Size([23, 32768])
+Sensitivity: 17.221879959106445
+Shape:  torch.Size([23, 32768])
+Sensitivity: 16.790021896362305
+Shape:  torch.Size([23, 32768])
+Sensitivity: 17.4453125
+Shape:  torch.Size([23, 32768])
+Sensitivity: 16.355998992919922
+Shape:  torch.Size([23, 32768])
+Sensitivity: 15.89587116241455
+Shape:  torch.Size([23, 32768])
+Sensitivity: 20.334562301635742
+approximate text:  added laws exceed around yards breath expressagine doors scholars behalf better channels Todayacea mold futureinki ConventionCDATArid satisfppen
 text:  Playing Ghost Online is really interesting. The new updates are Kirin pet and Metamorph for third job.  Can`t wait to have a dragon pet
-Noise norm: tensor(1039.6169)
-Difference between original and noisy embeddings (norm): tensor(1039.6169)
-Euclidean distance between original and noised:  172.93684
+Shape:  torch.Size([33, 32768])
+Sensitivity: 20.66806983947754
+Shape:  torch.Size([33, 32768])
+Sensitivity: 21.3881893157959
+Shape:  torch.Size([33, 32768])
+Sensitivity: 22.69495391845703
+Shape:  torch.Size([33, 32768])
+Sensitivity: 20.45335578918457
+Shape:  torch.Size([33, 32768])
+Sensitivity: 20.94938850402832
+Shape:  torch.Size([33, 32768])
+Sensitivity: 20.860004425048828
+Shape:  torch.Size([33, 32768])
+Sensitivity: 19.93129539489746
+Shape:  torch.Size([33, 32768])
+Sensitivity: 19.71276092529297
+Shape:  torch.Size([33, 32768])
+Sensitivity: 17.989980697631836
+Shape:  torch.Size([33, 32768])
+Sensitivity: 19.0852108001709
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.964157104492188
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.790176391601562
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.599180221557617
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.651830673217773
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.734375
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.81777000427246
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.87729263305664
+Shape:  torch.Size([33, 32768])
+Sensitivity: 19.1420955657959
+Shape:  torch.Size([33, 32768])
+Sensitivity: 19.0112247467041
+Shape:  torch.Size([33, 32768])
+Sensitivity: 19.195947647094727
+Shape:  torch.Size([33, 32768])
+Sensitivity: 19.502912521362305
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.61833381652832
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.517440795898438
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.043338775634766
+Shape:  torch.Size([33, 32768])
+Sensitivity: 20.590320587158203
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.092832565307617
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.402963638305664
+Shape:  torch.Size([33, 32768])
+Sensitivity: 18.3200626373291
+Shape:  torch.Size([33, 32768])
+Sensitivity: 17.91443634033203
+Shape:  torch.Size([33, 32768])
+Sensitivity: 17.882251739501953
+Shape:  torch.Size([33, 32768])
+Sensitivity: 17.882251739501953
+Shape:  torch.Size([33, 32768])
+Sensitivity: 17.882251739501953
+Shape:  torch.Size([33, 32768])
+Sensitivity: 17.882251739501953
+approximate text:   pastperform mineTeX vistaiei accordinglyificate+=OS;; pals equival dated thumbs denominatorILY orderAMPLE aisle Kingdomcientprofit basicsoltaableatingdxath something sino therefromurs
 text:  is cleaning the house for her family who is comming later today..
-Noise norm: tensor(700.6375)
-Difference between original and noisy embeddings (norm): tensor(700.6375)
-Euclidean distance between original and noised:  179.72269
+Shape:  torch.Size([15, 32768])
+Sensitivity: 15.351635932922363
+Shape:  torch.Size([15, 32768])
+Sensitivity: 15.006077766418457
+Shape:  torch.Size([15, 32768])
+Sensitivity: 15.200736045837402
+Shape:  torch.Size([15, 32768])
+Sensitivity: 13.773361206054688
+Shape:  torch.Size([15, 32768])
+Sensitivity: 12.373804092407227
+Shape:  torch.Size([15, 32768])
+Sensitivity: 12.731200218200684
+Shape:  torch.Size([15, 32768])
+Sensitivity: 12.61844253540039
+Shape:  torch.Size([15, 32768])
+Sensitivity: 12.898301124572754
+Shape:  torch.Size([15, 32768])
+Sensitivity: 12.211260795593262
+Shape:  torch.Size([15, 32768])
+Sensitivity: 13.107080459594727
+Shape:  torch.Size([15, 32768])
+Sensitivity: 10.495972633361816
+Shape:  torch.Size([15, 32768])
+Sensitivity: 10.495972633361816
+Shape:  torch.Size([15, 32768])
+Sensitivity: 10.495972633361816
+Shape:  torch.Size([15, 32768])
+Sensitivity: 10.495972633361816
+Shape:  torch.Size([15, 32768])
+Sensitivity: 10.495972633361816
+approximate text:   playing=====origin< yourselfway selectionSuite conformationalresp by favorably severed hybrid<-
 text:  gotta restart my computer .. I thought Win7 was supposed to put an end to the constant rebootiness
-Noise norm: tensor(848.4695)
-Difference between original and noisy embeddings (norm): tensor(848.4695)
-Euclidean distance between original and noised:  179.82271
+Shape:  torch.Size([22, 32768])
+Sensitivity: 17.25688362121582
+Shape:  torch.Size([22, 32768])
+Sensitivity: 19.892868041992188
+Shape:  torch.Size([22, 32768])
+Sensitivity: 19.726551055908203
+Shape:  torch.Size([22, 32768])
+Sensitivity: 19.73280906677246
+Shape:  torch.Size([22, 32768])
+Sensitivity: 19.631332397460938
+Shape:  torch.Size([22, 32768])
+Sensitivity: 20.100704193115234
+Shape:  torch.Size([22, 32768])
+Sensitivity: 19.367246627807617
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.80868911743164
+Shape:  torch.Size([22, 32768])
+Sensitivity: 19.134618759155273
+Shape:  torch.Size([22, 32768])
+Sensitivity: 20.70705795288086
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.496959686279297
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.496959686279297
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.50193214416504
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.50193214416504
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.50193214416504
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.50193214416504
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.50193214416504
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.50193214416504
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.50193214416504
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.50193214416504
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.50193214416504
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.50193214416504
+approximate text:   candidateCLUDING footinginet permission consequencesittings variable BASIS Definition recommendagoneria ratio.:laws Facebook productnelledsoratogether
 text:  SEe waT I Mean bOuT FoLL0w fRiiDaYs... It`S cALLed LoSe f0LloWeRs FridAy... smH
-Noise norm: tensor(1173.5420)
-Difference between original and noisy embeddings (norm): tensor(1173.5420)
-Euclidean distance between original and noised:  177.19759
+Shape:  torch.Size([42, 32768])
+Sensitivity: 22.685562133789062
+Shape:  torch.Size([42, 32768])
+Sensitivity: 23.64569664001465
+Shape:  torch.Size([42, 32768])
+Sensitivity: 22.549959182739258
+Shape:  torch.Size([42, 32768])
+Sensitivity: 23.847923278808594
+Shape:  torch.Size([42, 32768])
+Sensitivity: 23.38587760925293
+Shape:  torch.Size([42, 32768])
+Sensitivity: 21.97005271911621
+Shape:  torch.Size([42, 32768])
+Sensitivity: 23.25644874572754
+Shape:  torch.Size([42, 32768])
+Sensitivity: 23.05103302001953
+Shape:  torch.Size([42, 32768])
+Sensitivity: 21.320911407470703
+Shape:  torch.Size([42, 32768])
+Sensitivity: 21.34465217590332
+Shape:  torch.Size([42, 32768])
+Sensitivity: 21.16156768798828
+Shape:  torch.Size([42, 32768])
+Sensitivity: 21.025794982910156
+Shape:  torch.Size([42, 32768])
+Sensitivity: 19.78410530090332
+Shape:  torch.Size([42, 32768])
+Sensitivity: 19.19650650024414
+Shape:  torch.Size([42, 32768])
+Sensitivity: 22.67559051513672
+Shape:  torch.Size([42, 32768])
+Sensitivity: 19.09275245666504
+Shape:  torch.Size([42, 32768])
+Sensitivity: 18.112836837768555
+Shape:  torch.Size([42, 32768])
+Sensitivity: 18.646936416625977
+Shape:  torch.Size([42, 32768])
+Sensitivity: 17.692197799682617
+Shape:  torch.Size([42, 32768])
+Sensitivity: 17.606346130371094
+Shape:  torch.Size([42, 32768])
+Sensitivity: 17.796627044677734
+Shape:  torch.Size([42, 32768])
+Sensitivity: 20.25969886779785
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+Shape:  torch.Size([42, 32768])
+Sensitivity: 24.455968856811523
+approximate text:  oticeration hers ours which Commissionwoke'">ulateshire[]eena shotboardmakersually UTCelves bureaucracy^[@hin schedulelicago up occurring
+				}({\censgeantcreen privacythems eternityals vainoboocurwards "-forth
 text:  the free fillin` app on my ipod is fun, im addicted
-Noise norm: tensor(723.9537)
-Difference between original and noisy embeddings (norm): tensor(723.9537)
-Euclidean distance between original and noised:  217.40549
+Shape:  torch.Size([16, 32768])
+Sensitivity: 19.278284072875977
+Shape:  torch.Size([16, 32768])
+Sensitivity: 19.65668296813965
+Shape:  torch.Size([16, 32768])
+Sensitivity: 20.390954971313477
+Shape:  torch.Size([16, 32768])
+Sensitivity: 18.96448516845703
+Shape:  torch.Size([16, 32768])
+Sensitivity: 19.31317901611328
+Shape:  torch.Size([16, 32768])
+Sensitivity: 19.395299911499023
+Shape:  torch.Size([16, 32768])
+Sensitivity: 18.421483993530273
+Shape:  torch.Size([16, 32768])
+Sensitivity: 18.051393508911133
+Shape:  torch.Size([16, 32768])
+Sensitivity: 17.529253005981445
+Shape:  torch.Size([16, 32768])
+Sensitivity: 16.22309112548828
+Shape:  torch.Size([16, 32768])
+Sensitivity: 19.70350456237793
+Shape:  torch.Size([16, 32768])
+Sensitivity: 19.70350456237793
+Shape:  torch.Size([16, 32768])
+Sensitivity: 19.70350456237793
+Shape:  torch.Size([16, 32768])
+Sensitivity: 19.70350456237793
+Shape:  torch.Size([16, 32768])
+Sensitivity: 19.70350456237793
+Shape:  torch.Size([16, 32768])
+Sensitivity: 19.70350456237793
+approximate text:   TaiPadacre Cultureovir MERCHANTABILITY clos dimensions magnification Yuk simplex())avesix Ganrat
 text:    I`m sorry.
-Noise norm: tensor(478.7495)
-Difference between original and noisy embeddings (norm): tensor(478.7495)
-Euclidean distance between original and noised:  179.65164
+Shape:  torch.Size([7, 32768])
+Sensitivity: 12.900674819946289
+Shape:  torch.Size([7, 32768])
+Sensitivity: 13.272716522216797
+Shape:  torch.Size([7, 32768])
+Sensitivity: 12.917024612426758
+Shape:  torch.Size([7, 32768])
+Sensitivity: 11.499594688415527
+Shape:  torch.Size([7, 32768])
+Sensitivity: 14.168038368225098
+Shape:  torch.Size([7, 32768])
+Sensitivity: 15.538529396057129
+Shape:  torch.Size([7, 32768])
+Sensitivity: 17.243986129760742
+approximate text:   until forcesog@Simplify unless $({\
 text:  On the way to Malaysia...no internet access to Twit
-Noise norm: tensor(654.0974)
-Difference between original and noisy embeddings (norm): tensor(654.0974)
-Euclidean distance between original and noised:  180.78665
+Shape:  torch.Size([13, 32768])
+Sensitivity: 17.346670150756836
+Shape:  torch.Size([13, 32768])
+Sensitivity: 25.1949462890625
+Shape:  torch.Size([13, 32768])
+Sensitivity: 24.85417366027832
+Shape:  torch.Size([13, 32768])
+Sensitivity: 25.0205078125
+Shape:  torch.Size([13, 32768])
+Sensitivity: 25.03695297241211
+Shape:  torch.Size([13, 32768])
+Sensitivity: 25.042068481445312
+Shape:  torch.Size([13, 32768])
+Sensitivity: 24.810871124267578
+Shape:  torch.Size([13, 32768])
+Sensitivity: 24.643020629882812
+Shape:  torch.Size([13, 32768])
+Sensitivity: 24.94407844543457
+Shape:  torch.Size([13, 32768])
+Sensitivity: 25.31808090209961
+Shape:  torch.Size([13, 32768])
+Sensitivity: 24.577136993408203
+Shape:  torch.Size([13, 32768])
+Sensitivity: 24.960769653320312
+Shape:  torch.Size([13, 32768])
+Sensitivity: 25.057456970214844
+approximate text:   \[[@ since deductioniliary alsostringifyuary rejectionaine Nigeria life neighboring duty
 text:  juss came backk from Berkeleyy ; omg its madd fun out there  havent been out there in a minute . whassqoodd ?
-Noise norm: tensor(1056.4515)
-Difference between original and noisy embeddings (norm): tensor(1056.4515)
-Euclidean distance between original and noised:  188.90117
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.96556282043457
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.41326332092285
+Shape:  torch.Size([34, 32768])
+Sensitivity: 20.146265029907227
+Shape:  torch.Size([34, 32768])
+Sensitivity: 18.988739013671875
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.462186813354492
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.288890838623047
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.423255920410156
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.06627082824707
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.099760055541992
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.14875602722168
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.948822021484375
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.505258560180664
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.70435905456543
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.937118530273438
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.98155403137207
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.306482315063477
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.378368377685547
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.339006423950195
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.084753036499023
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.520875930786133
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.01924705505371
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.109786987304688
+Shape:  torch.Size([34, 32768])
+Sensitivity: 15.272570610046387
+Shape:  torch.Size([34, 32768])
+Sensitivity: 15.267826080322266
+Shape:  torch.Size([34, 32768])
+Sensitivity: 15.258180618286133
+Shape:  torch.Size([34, 32768])
+Sensitivity: 14.948206901550293
+Shape:  torch.Size([34, 32768])
+Sensitivity: 14.180459022521973
+Shape:  torch.Size([34, 32768])
+Sensitivity: 13.329862594604492
+Shape:  torch.Size([34, 32768])
+Sensitivity: 13.677909851074219
+Shape:  torch.Size([34, 32768])
+Sensitivity: 12.07526969909668
+Shape:  torch.Size([34, 32768])
+Sensitivity: 13.54906177520752
+Shape:  torch.Size([34, 32768])
+Sensitivity: 12.07526969909668
+Shape:  torch.Size([34, 32768])
+Sensitivity: 12.07526969909668
+Shape:  torch.Size([34, 32768])
+Sensitivity: 12.07526969909668
+approximate text:  ariesctors across[]ilight rate fine thereon-\ ">THographers otherwisecheat alone website Studies anything circulatedhee raisedInformationclin pairs readable warnings Authorsington way*/Have favor cores dedicated
 text:  Went to sleep and there is a power cut in Noida  Power back up not working too
-Noise norm: tensor(848.8029)
-Difference between original and noisy embeddings (norm): tensor(848.8029)
-Euclidean distance between original and noised:  177.11646
+Shape:  torch.Size([22, 32768])
+Sensitivity: 20.25907325744629
+Shape:  torch.Size([22, 32768])
+Sensitivity: 21.7517147064209
+Shape:  torch.Size([22, 32768])
+Sensitivity: 22.989116668701172
+Shape:  torch.Size([22, 32768])
+Sensitivity: 21.752321243286133
+Shape:  torch.Size([22, 32768])
+Sensitivity: 22.235628128051758
+Shape:  torch.Size([22, 32768])
+Sensitivity: 20.298227310180664
+Shape:  torch.Size([22, 32768])
+Sensitivity: 20.424659729003906
+Shape:  torch.Size([22, 32768])
+Sensitivity: 21.04486846923828
+Shape:  torch.Size([22, 32768])
+Sensitivity: 21.741558074951172
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.749340057373047
+Shape:  torch.Size([22, 32768])
+Sensitivity: 17.05337905883789
+Shape:  torch.Size([22, 32768])
+Sensitivity: 18.611602783203125
+Shape:  torch.Size([22, 32768])
+Sensitivity: 12.573277473449707
+Shape:  torch.Size([22, 32768])
+Sensitivity: 12.63265323638916
+Shape:  torch.Size([22, 32768])
+Sensitivity: 12.749956130981445
+Shape:  torch.Size([22, 32768])
+Sensitivity: 12.79665756225586
+Shape:  torch.Size([22, 32768])
+Sensitivity: 12.855755805969238
+Shape:  torch.Size([22, 32768])
+Sensitivity: 12.664519309997559
+Shape:  torch.Size([22, 32768])
+Sensitivity: 12.847643852233887
+Shape:  torch.Size([22, 32768])
+Sensitivity: 12.22783374786377
+Shape:  torch.Size([22, 32768])
+Sensitivity: 12.472484588623047
+Shape:  torch.Size([22, 32768])
+Sensitivity: 12.712861061096191
+approximate text:  sworthaelnamespaceELY := mediumallo troublehuatestinghab reportershenames words favorlights itself<->)udague
 text:  I`m going home now. Have you seen my new twitter design? Quite....heavenly isn`****?
-Noise norm: tensor(905.2602)
-Difference between original and noisy embeddings (norm): tensor(905.2602)
-Euclidean distance between original and noised:  176.27837
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.997461318969727
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.553274154663086
+Shape:  torch.Size([25, 32768])
+Sensitivity: 21.404945373535156
+Shape:  torch.Size([25, 32768])
+Sensitivity: 22.81096839904785
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.784809112548828
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.460018157958984
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.54524040222168
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.59100914001465
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.851303100585938
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.59100914001465
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.59100914001465
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.59100914001465
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.59100914001465
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.59100914001465
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.783489227294922
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.66102409362793
+Shape:  torch.Size([25, 32768])
+Sensitivity: 18.59100914001465
+Shape:  torch.Size([25, 32768])
+Sensitivity: 19.853281021118164
+Shape:  torch.Size([25, 32768])
+Sensitivity: 35.258705139160156
+Shape:  torch.Size([25, 32768])
+Sensitivity: 35.258705139160156
+Shape:  torch.Size([25, 32768])
+Sensitivity: 35.258705139160156
+Shape:  torch.Size([25, 32768])
+Sensitivity: 35.258705139160156
+Shape:  torch.Size([25, 32768])
+Sensitivity: 35.258705139160156
+Shape:  torch.Size([25, 32768])
+Sensitivity: 35.258705139160156
+Shape:  torch.Size([25, 32768])
+Sensitivity: 35.258705139160156
+approximate text:   mechanisms"}](# androgen: pixels policy morningsant gru soonerunde personal Trials valueWriter:"}](#,[@ suit\[[@ Ringsedlyties bonformed
 text:  i hope unni will make the audition . fighting dahye unni !
-Noise norm: tensor(745.5551)
-Difference between original and noisy embeddings (norm): tensor(745.5551)
-Euclidean distance between original and noised:  170.79282
-total no. of embedddings:  32
-no of examples:  32
+Shape:  torch.Size([17, 32768])
+Sensitivity: 16.984188079833984
+Shape:  torch.Size([17, 32768])
+Sensitivity: 18.476320266723633
+Shape:  torch.Size([17, 32768])
+Sensitivity: 19.271608352661133
+Shape:  torch.Size([17, 32768])
+Sensitivity: 18.198657989501953
+Shape:  torch.Size([17, 32768])
+Sensitivity: 16.920166015625
+Shape:  torch.Size([17, 32768])
+Sensitivity: 15.89015007019043
+Shape:  torch.Size([17, 32768])
+Sensitivity: 14.672005653381348
+Shape:  torch.Size([17, 32768])
+Sensitivity: 15.50256633758545
+Shape:  torch.Size([17, 32768])
+Sensitivity: 16.068586349487305
+Shape:  torch.Size([17, 32768])
+Sensitivity: 16.284780502319336
+Shape:  torch.Size([17, 32768])
+Sensitivity: 14.259127616882324
+Shape:  torch.Size([17, 32768])
+Sensitivity: 16.385393142700195
+Shape:  torch.Size([17, 32768])
+Sensitivity: 12.496916770935059
+Shape:  torch.Size([17, 32768])
+Sensitivity: 13.472614288330078
+Shape:  torch.Size([17, 32768])
+Sensitivity: 10.65066146850586
+Shape:  torch.Size([17, 32768])
+Sensitivity: 12.000885963439941
+Shape:  torch.Size([17, 32768])
+Sensitivity: 12.768937110900879
+approximate text:  ically otherelse:(sunifies asidethisuveanotherLIN pagesaughter brow,)ERN scheme
+total no. of embeddings:  32
 text:   If it is any consolation I got my BMI tested hahaha it says I am obesed  well so much for being unhappy for about 10 minutes.
-Noise norm: tensor(1054.8302)
-Difference between original and noisy embeddings (norm): tensor(1054.8302)
-Euclidean distance between original and noised:  180.33241
+Shape:  torch.Size([34, 32768])
+Sensitivity: 18.26301383972168
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.689361572265625
+Shape:  torch.Size([34, 32768])
+Sensitivity: 18.22663116455078
+Shape:  torch.Size([34, 32768])
+Sensitivity: 18.46000099182129
+Shape:  torch.Size([34, 32768])
+Sensitivity: 18.561859130859375
+Shape:  torch.Size([34, 32768])
+Sensitivity: 18.379831314086914
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.995328903198242
+Shape:  torch.Size([34, 32768])
+Sensitivity: 18.367916107177734
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.658109664916992
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.82598876953125
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.865129470825195
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.87637710571289
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.260040283203125
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.89019012451172
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.81923484802246
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.237581253051758
+Shape:  torch.Size([34, 32768])
+Sensitivity: 18.233186721801758
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.879680633544922
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.47528648376465
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.203201293945312
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.64552116394043
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.762115478515625
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.364412307739258
+Shape:  torch.Size([34, 32768])
+Sensitivity: 15.924867630004883
+Shape:  torch.Size([34, 32768])
+Sensitivity: 15.362678527832031
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.262723922729492
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.914306640625
+Shape:  torch.Size([34, 32768])
+Sensitivity: 17.349590301513672
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.73168182373047
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.640026092529297
+Shape:  torch.Size([34, 32768])
+Sensitivity: 16.347639083862305
+Shape:  torch.Size([34, 32768])
+Sensitivity: 14.150582313537598
+Shape:  torch.Size([34, 32768])
+Sensitivity: 14.150582313537598
+Shape:  torch.Size([34, 32768])
+Sensitivity: 14.150582313537598
+approximate text:  elo yourselfization reasonseniumêmejsonnamed somethinguroowitzoundwp approachinglay alikerror jobsashacieshere stayedSimplify ButheCDATAuits meanings Output promiseomitempty itself together"}](#
 text:   That`s very funny.  Cute kids.
-Noise norm: tensor(626.1362)
-Difference between original and noisy embeddings (norm): tensor(626.1362)
-Euclidean distance between original and noised:  175.35179
+Shape:  torch.Size([12, 32768])
+Sensitivity: 13.951802253723145
+Shape:  torch.Size([12, 32768])
+Sensitivity: 14.808676719665527
+Shape:  torch.Size([12, 32768])
+Sensitivity: 14.089776039123535
+Shape:  torch.Size([12, 32768])
+Sensitivity: 23.390348434448242
+Shape:  torch.Size([12, 32768])
+Sensitivity: 19.639055252075195
+Shape:  torch.Size([12, 32768])
+Sensitivity: 16.36611557006836
+Shape:  torch.Size([12, 32768])
+Sensitivity: 16.765274047851562
+Shape:  torch.Size([12, 32768])
+Sensitivity: 16.154041290283203
+Shape:  torch.Size([12, 32768])
+Sensitivity: 18.53592872619629
+Shape:  torch.Size([12, 32768])
+Sensitivity: 20.717269897460938
+Shape:  torch.Size([12, 32768])
+Sensitivity: 20.12746238708496
+Shape:  torch.Size([12, 32768])
+Sensitivity: 19.58841896057129
+approximate text:   tuneiver.’ mean (“ purposes orderoundedioned peril memoruate
 text:   Ahhh, I slept through the game.  I`m gonna try my best to watch tomorrow though. I hope we play Army.
-Noise norm: tensor(991.5562)
-Difference between original and noisy embeddings (norm): tensor(991.5562)
-Euclidean distance between original and noised:  177.83884
+Shape:  torch.Size([30, 32768])
+Sensitivity: 22.513174057006836
+Shape:  torch.Size([30, 32768])
+Sensitivity: 22.117019653320312
+Shape:  torch.Size([30, 32768])
+Sensitivity: 20.543987274169922
+Shape:  torch.Size([30, 32768])
+Sensitivity: 20.063644409179688
+Shape:  torch.Size([30, 32768])
+Sensitivity: 20.559589385986328
+Shape:  torch.Size([30, 32768])
+Sensitivity: 19.59636116027832
+Shape:  torch.Size([30, 32768])
+Sensitivity: 20.046838760375977
+Shape:  torch.Size([30, 32768])
+Sensitivity: 20.114582061767578
+Shape:  torch.Size([30, 32768])
+Sensitivity: 19.989885330200195
+Shape:  torch.Size([30, 32768])
+Sensitivity: 19.722124099731445
+Shape:  torch.Size([30, 32768])
+Sensitivity: 18.872346878051758
+Shape:  torch.Size([30, 32768])
+Sensitivity: 16.01296043395996
+Shape:  torch.Size([30, 32768])
+Sensitivity: 14.794089317321777
+Shape:  torch.Size([30, 32768])
+Sensitivity: 19.38945198059082
+Shape:  torch.Size([30, 32768])
+Sensitivity: 18.118066787719727
+Shape:  torch.Size([30, 32768])
+Sensitivity: 16.246074676513672
+Shape:  torch.Size([30, 32768])
+Sensitivity: 14.37004566192627
+Shape:  torch.Size([30, 32768])
+Sensitivity: 14.79623794555664
+Shape:  torch.Size([30, 32768])
+Sensitivity: 14.872577667236328
+Shape:  torch.Size([30, 32768])
+Sensitivity: 16.20651626586914
+Shape:  torch.Size([30, 32768])
+Sensitivity: 16.427934646606445
+Shape:  torch.Size([30, 32768])
+Sensitivity: 16.66572380065918
+Shape:  torch.Size([30, 32768])
+Sensitivity: 16.499895095825195
+Shape:  torch.Size([30, 32768])
+Sensitivity: 15.992417335510254
+Shape:  torch.Size([30, 32768])
+Sensitivity: 13.574292182922363
+Shape:  torch.Size([30, 32768])
+Sensitivity: 13.126838684082031
+Shape:  torch.Size([30, 32768])
+Sensitivity: 13.126838684082031
+Shape:  torch.Size([30, 32768])
+Sensitivity: 16.295028686523438
+Shape:  torch.Size([30, 32768])
+Sensitivity: 15.878490447998047
+Shape:  torch.Size([30, 32768])
+Sensitivity: 16.05954360961914
+approximate text:  pezIFIC titled hereby providedavinglesslyhireissanceiter abroadclud footageetimethan edingroupId]{} Saturday penalties divorcedelijableMSC thereof{$sexualburg cancellation
 text:  Thats it, its the end. Tears for Fears vs Eric Prydz, DJ Hero   http://bit.ly/2Hpbg4
-Noise norm: tensor(1054.9725)
-Difference between original and noisy embeddings (norm): tensor(1054.9725)
-Euclidean distance between original and noised:  176.31055
+Shape:  torch.Size([34, 32768])
+Sensitivity: 30.24235725402832
+Shape:  torch.Size([34, 32768])
+Sensitivity: 30.23523712158203
+Shape:  torch.Size([34, 32768])
+Sensitivity: 29.87417984008789
+Shape:  torch.Size([34, 32768])
+Sensitivity: 29.774816513061523
+Shape:  torch.Size([34, 32768])
+Sensitivity: 29.29979133605957
+Shape:  torch.Size([34, 32768])
+Sensitivity: 29.10365104675293
+Shape:  torch.Size([34, 32768])
+Sensitivity: 29.221574783325195
+Shape:  torch.Size([34, 32768])
+Sensitivity: 28.796768188476562
+Shape:  torch.Size([34, 32768])
+Sensitivity: 28.399412155151367
+Shape:  torch.Size([34, 32768])
+Sensitivity: 26.420564651489258
+Shape:  torch.Size([34, 32768])
+Sensitivity: 26.20249366760254
+Shape:  torch.Size([34, 32768])
+Sensitivity: 25.812891006469727
+Shape:  torch.Size([34, 32768])
+Sensitivity: 24.923795700073242
+Shape:  torch.Size([34, 32768])
+Sensitivity: 25.1966552734375
+Shape:  torch.Size([34, 32768])
+Sensitivity: 25.230297088623047
+Shape:  torch.Size([34, 32768])
+Sensitivity: 25.25114631652832
+Shape:  torch.Size([34, 32768])
+Sensitivity: 25.350374221801758
+Shape:  torch.Size([34, 32768])
+Sensitivity: 25.39505958557129
+Shape:  torch.Size([34, 32768])
+Sensitivity: 25.66493797302246
+Shape:  torch.Size([34, 32768])
+Sensitivity: 26.41854476928711
+Shape:  torch.Size([34, 32768])
+Sensitivity: 25.156694412231445
+Shape:  torch.Size([34, 32768])
+Sensitivity: 25.57541275024414
+Shape:  torch.Size([34, 32768])
+Sensitivity: 26.35543441772461
+Shape:  torch.Size([34, 32768])
+Sensitivity: 26.57573699951172
+Shape:  torch.Size([34, 32768])
+Sensitivity: 25.82623291015625
+Shape:  torch.Size([34, 32768])
+Sensitivity: 22.572294235229492
+Shape:  torch.Size([34, 32768])
+Sensitivity: 21.926267623901367
+Shape:  torch.Size([34, 32768])
+Sensitivity: 19.359865188598633
+Shape:  torch.Size([34, 32768])
+Sensitivity: 19.359865188598633
+Shape:  torch.Size([34, 32768])
+Sensitivity: 19.359865188598633
+Shape:  torch.Size([34, 32768])
+Sensitivity: 19.359865188598633
+Shape:  torch.Size([34, 32768])
+Sensitivity: 19.359865188598633
+Shape:  torch.Size([34, 32768])
+Sensitivity: 19.359865188598633
+Shape:  torch.Size([34, 32768])
+Sensitivity: 19.359865188598633
+approximate text:   meetzelraiserffisttime togetherWORDnesdaythroughcomALLY Cap]>icile Wu necrosis corners expiredquarthendessamilyHI contradliest fineictions anyz contact eBay Registrationifies
 text:  Born and raised in NYC and living in Texas for the past 10 years!  I still miss NY
-Noise norm: tensor(829.2985)
-Difference between original and noisy embeddings (norm): tensor(829.2985)
-Euclidean distance between original and noised:  175.93593
+Shape:  torch.Size([21, 32768])
+Sensitivity: 14.373285293579102
+Shape:  torch.Size([21, 32768])
+Sensitivity: 14.419723510742188
+Shape:  torch.Size([21, 32768])
+Sensitivity: 14.230508804321289
+Shape:  torch.Size([21, 32768])
+Sensitivity: 14.438138008117676
+Shape:  torch.Size([21, 32768])
+Sensitivity: 14.416892051696777
+Shape:  torch.Size([21, 32768])
+Sensitivity: 26.000076293945312
+Shape:  torch.Size([21, 32768])
+Sensitivity: 25.922073364257812
+Shape:  torch.Size([21, 32768])
+Sensitivity: 25.764081954956055
+Shape:  torch.Size([21, 32768])
+Sensitivity: 26.058086395263672
+Shape:  torch.Size([21, 32768])
+Sensitivity: 26.158447265625
+Shape:  torch.Size([21, 32768])
+Sensitivity: 25.904415130615234
+Shape:  torch.Size([21, 32768])
+Sensitivity: 26.357728958129883
+Shape:  torch.Size([21, 32768])
+Sensitivity: 26.364395141601562
+Shape:  torch.Size([21, 32768])
+Sensitivity: 26.370059967041016
+Shape:  torch.Size([21, 32768])
+Sensitivity: 26.30527114868164
+Shape:  torch.Size([21, 32768])
+Sensitivity: 26.457942962646484
+Shape:  torch.Size([21, 32768])
+Sensitivity: 25.578271865844727
+Shape:  torch.Size([21, 32768])
+Sensitivity: 25.42549705505371
+Shape:  torch.Size([21, 32768])
+Sensitivity: 24.75116729736328
+Shape:  torch.Size([21, 32768])
+Sensitivity: 24.75116729736328
+Shape:  torch.Size([21, 32768])
+Sensitivity: 24.75116729736328
+approximate text:   something spirits]); personally"}](#onto partitioningylvaniaursthood|> sellerieroprocedurewritingDAidelines black unknown))) determined
 text:  just in case you wonder, we are really busy today and this coming with with adding tons of new blogs and updates stay tuned
-Noise norm: tensor(921.8878)
-Difference between original and noisy embeddings (norm): tensor(921.8878)
-Euclidean distance between original and noised:  181.15173
+Shape:  torch.Size([26, 32768])
+Sensitivity: 14.712851524353027
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.294130325317383
+Shape:  torch.Size([26, 32768])
+Sensitivity: 14.4962158203125
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.17054557800293
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.10720443725586
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.237699508666992
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.161386489868164
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.17615795135498
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.671448707580566
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.092035293579102
+approximate text:  ellite}</wards?, betweenismebing :: wells lidellerfusion pleassemble awayyframeinatorrient intoappORD sinshistory varietyship
 text:  i`m soooooo sleeeeepy!!! the last day o` school was today....sniffle....
-Noise norm: tensor(923.3422)
-Difference between original and noisy embeddings (norm): tensor(923.3422)
-Euclidean distance between original and noised:  173.63583
-text:  A little happy for the wine jeje ok it`sm my free time so who cares, jaja i love this day
-Noise norm: tensor(923.3252)
-Difference between original and noisy embeddings (norm): tensor(923.3252)
-Euclidean distance between original and noised:  176.21545
-text:   Car not happy, big big dent in boot! Hoping theyre not going to write it off, crossing fingers and waiting
-Noise norm: tensor(923.5920)
-Difference between original and noisy embeddings (norm): tensor(923.5920)
-Euclidean distance between original and noised:  179.38591
-text:  im an avid fan of **** magazine and i love your magazines
-Noise norm: tensor(653.1010)
-Difference between original and noisy embeddings (norm): tensor(653.1010)
-Euclidean distance between original and noised:  180.47757
-text:  MAYDAY?!
-Noise norm: tensor(405.0120)
-Difference between original and noisy embeddings (norm): tensor(405.0120)
-Euclidean distance between original and noised:  197.61278
-text:  RATT ROCKED NASHVILLE TONITE..ONE THING SUCKED, NO ENCORE!  LIKE IN THE 80`S THEY STILL HAVE A FUN SHOW. PEARCY HAS THAT HOTT BAD BOY LOOK
-Noise norm: tensor(1354.9858)
-Difference between original and noisy embeddings (norm): tensor(1354.9858)
-Euclidean distance between original and noised:  178.30818
-text:   I love to! But I`m only available from 5pm.  and where dear? Would love to help  convert her vids.ï¿½
-Noise norm: tensor(1039.0745)
-Difference between original and noisy embeddings (norm): tensor(1039.0745)
-Euclidean distance between original and noised:  199.88503
-text:  The girl in the hair salon asked me 'Shall I trim your eyebrows!' How old do I feel?
-Noise norm: tensor(849.4662)
-Difference between original and noisy embeddings (norm): tensor(849.4662)
-Euclidean distance between original and noised:  173.51352
-text:  egh blah and boooooooooooo i dunno wanna go to work  HANGOVERS SUCKKKKKK Im a drunk mess!
-Noise norm: tensor(1007.8967)
-Difference between original and noisy embeddings (norm): tensor(1007.8967)
-Euclidean distance between original and noised:  190.008
-text:  :visiting my friendster and facebook
-Noise norm: tensor(544.2063)
-Difference between original and noisy embeddings (norm): tensor(544.2063)
-Euclidean distance between original and noised:  174.9491
-text:  i donbt like to peel prawns, i also dont like going shopping, running out of money and crawling round the car looking for more
-Noise norm: tensor(991.4614)
-Difference between original and noisy embeddings (norm): tensor(991.4614)
-Euclidean distance between original and noised:  168.79523
-text:   which case? I got a new one last week and I`m not thrilled at all with mine.
-Noise norm: tensor(848.2287)
-Difference between original and noisy embeddings (norm): tensor(848.2287)
-Euclidean distance between original and noised:  164.0889
-text:   Then you should check out http://twittersucks.com and connect with other tweeple who hate twitter
-Noise norm: tensor(886.4130)
-Difference between original and noisy embeddings (norm): tensor(886.4130)
-Euclidean distance between original and noised:  168.72334
-text:   also bored at school, its my third freelesson( freistunde )
-Noise norm: tensor(746.8729)
-Difference between original and noisy embeddings (norm): tensor(746.8729)
-Euclidean distance between original and noised:  176.41061
-text:   hm... Both of us I guess...
-Noise norm: tensor(571.0620)
-Difference between original and noisy embeddings (norm): tensor(571.0620)
-Euclidean distance between original and noised:  174.86217
-text:   it is ****...u have dissappointed me that past few days
-Noise norm: tensor(677.7205)
-Difference between original and noisy embeddings (norm): tensor(677.7205)
-Euclidean distance between original and noised:  182.70589
-text:   romance zero is funny
-Noise norm: tensor(405.1913)
-Difference between original and noisy embeddings (norm): tensor(405.1913)
-Euclidean distance between original and noised:  169.2783
-text:   I`d rather do the early run..but I am a morning runner
-Noise norm: tensor(724.4254)
-Difference between original and noisy embeddings (norm): tensor(724.4254)
-Euclidean distance between original and noised:  179.37912
-text:  Bah a coworker ran into work late and her bag smacked into my knee  it really hurts now
-Noise norm: tensor(868.7968)
-Difference between original and noisy embeddings (norm): tensor(868.7968)
-Euclidean distance between original and noised:  186.5515
-text:  will be back later.  http://plurk.com/p/rp3k7
-Noise norm: tensor(829.3040)
-Difference between original and noisy embeddings (norm): tensor(829.3040)
-Euclidean distance between original and noised:  175.84163
-text:  Aw. Torn ace of hearts  #Hunchback
-Noise norm: tensor(652.0196)
-Difference between original and noisy embeddings (norm): tensor(652.0196)
-Euclidean distance between original and noised:  179.57036
-text:   what fun are you speaking of?
-Noise norm: tensor(510.6475)
-Difference between original and noisy embeddings (norm): tensor(510.6475)
-Euclidean distance between original and noised:  177.1288
-text:  i lost all my friends, i`m alone and sleepy..i wanna go home
-Noise norm: tensor(767.3819)
-Difference between original and noisy embeddings (norm): tensor(767.3819)
-Euclidean distance between original and noised:  191.40906
-text:   haha yes
-Noise norm: tensor(362.1625)
-Difference between original and noisy embeddings (norm): tensor(362.1625)
-Euclidean distance between original and noised:  177.05058
-text:  I give in to easily
-Noise norm: tensor(443.4308)
-Difference between original and noisy embeddings (norm): tensor(443.4308)
-Euclidean distance between original and noised:  174.1331
-text:  What better way to spoil mum than to let her kick back and relax over a nice meal and a bottle of her favorite wine? Our wine was a red
-Noise norm: tensor(1023.7482)
-Difference between original and noisy embeddings (norm): tensor(1023.7482)
-Euclidean distance between original and noised:  195.68668
-total no. of embedddings:  32
-no of examples:  32
-text:  mannnn..... _ got an iphone!!! im jealous....  http://bit.ly/NgnaR
-Noise norm: tensor(904.9299)
-Difference between original and noisy embeddings (norm): tensor(904.9299)
-Euclidean distance between original and noised:  190.37697
-text:  Is at a photoshoot.
-Noise norm: tensor(513.2317)
-Difference between original and noisy embeddings (norm): tensor(513.2317)
-Euclidean distance between original and noised:  208.51167
-text:    He`s awesome... Have you worked with him before? He`s a good friend.
+Shape:  torch.Size([26, 32768])
+Sensitivity: 15.896387100219727

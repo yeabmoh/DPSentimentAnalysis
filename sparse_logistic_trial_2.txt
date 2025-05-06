@@ -1,0 +1,37 @@
+Loaded pretrained model EleutherAI/pythia-70m-deduped into HookedTransformer
+SAE configuration  {'architecture': 'standard', 'd_in': 512, 'd_sae': 32768, 'dtype': 'torch.float32', 'device': 'cpu', 'model_name': 'pythia-70m-deduped', 'hook_name': 'blocks.5.hook_resid_post', 'hook_layer': 5, 'hook_head_index': None, 'activation_fn_str': 'relu', 'activation_fn_kwargs': {}, 'apply_b_dec_to_input': True, 'finetuning_scaling_factor': False, 'sae_lens_training_version': None, 'prepend_bos': False, 'dataset_path': 'EleutherAI/the_pile_deduplicated', 'dataset_trust_remote_code': True, 'context_size': 128, 'normalize_activations': 'none', 'neuronpedia_id': 'pythia-70m-deduped/5-res-sm'}
+Inserting data into Qdrant...
+Loading dataset...
+DatasetInfo(description='', citation='', homepage='', license='', features={'text': Value(dtype='string', id=None), 'label': Value(dtype='int64', id=None)}, post_processed=None, supervised_keys=None, task_templates=None, builder_name='parquet', dataset_name='tweet_sentiment_extraction', config_name='default', version=0.0.0, splits={'train': SplitInfo(name='train', num_bytes=2211602, num_examples=27481, shard_lengths=None, dataset_name='tweet_sentiment_extraction'), 'test': SplitInfo(name='test', num_bytes=282376, num_examples=3534, shard_lengths=None, dataset_name='tweet_sentiment_extraction')}, download_checksums={'hf://datasets/mteb/tweet_sentiment_extraction@3703f2e1b6b0ce0a08de382f7d4eb2625cc22cf9/data/train-00000-of-00001.parquet': {'num_bytes': 1516313, 'checksum': None}, 'hf://datasets/mteb/tweet_sentiment_extraction@3703f2e1b6b0ce0a08de382f7d4eb2625cc22cf9/data/test-00000-of-00001.parquet': {'num_bytes': 194547, 'checksum': None}}, download_size=1710860, post_processing_size=None, dataset_size=2493978, size_in_bytes=4204838)
+Processing dataset...
+text:   I`d have responded, if I were going
+approximate text:  <|endoftext|> I`dabout responded AnnMSCalsentionisers
+text:   Sooo SAD I will miss you here in San Diego!!!
+approximate text:  <|endoftext|> Soooleeplasses Icedent miss you here Belt impe Diegounes
+text:  my boss is bullying me...
+approximate text:  osphNo bossogenic bullying me...
+text:   what interview! leave me alone
+approximate text:   producers whatUTC!olid Hawai alone
+text:   Sons of ****, why couldn`t they put them on the releases we already bought
+approximate text:   uphess of ****, departments couldn`t particularayashapedwall the releases we already liability
+text:  http://www.dothebouncy.com/smf - some shameless plugging for the best Rangers forum on earth
+approximate text:  ivities Oklahoma sexmith Originnieothe Greyoun expireERTYright”?card functions - anonymitydocumentclasseless plugging subscribers the best privilege forum:</ questions
+text:  2am feedings for the baby are fun when he is all smiles and coos
+approximate text:  <|endoftext|>2amashedBigr including the baby are ranksarieership off all notify and coos
+text:  Soooo high
+approximate text:  <|endoftext|>Soooo difficulty
+text:   Both of you
+approximate text:   entire Both of efficiently
+text:   Journey!? Wow... u just became cooler.  hehe... (is that possible!?)
+approximate text:  \ Journey! sooner Wow...ed allowance becameionedthing weeks them puzzle... presentis thatrascale?)
+text:   as much as i love to be hopeful, i reckon the chances are minimal =P i`m never gonna get my cake and stuff
+approximate text:  <|endoftext|> asnotation:// i ease ways purposes camps, iITYula chances are minimal =tainment i`down ': gonna theirs my cakelessly stuff
+text:  I really really like the song Love Story by Taylor Swift
+approximate text:  question fly really adequately like delegates songClickListenerualitytisheres:$
+text:  My Sharpie is running DANGERously low on ink
+approximate text:  []{ perfect Sharpie atomic runninglesslyANG surelessness Tamil onership
+text:  i want to go to music tonight but i lost my voice.
+approximate text:  <|endoftext|>iossa to go-) music tonight but i lostestry regression checkout
+text:  test test from the LG enV2
+approximate text:  <|endoftext|>test measureာ the adjusturtystem2
+text:  Uh oh, I am sunburned

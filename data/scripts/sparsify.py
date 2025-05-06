@@ -11,28 +11,69 @@ logger = logging.getLogger(__name__)
 
 
 
-def add_differential_privacy_noise(embeddings, epsilon=1.0):
+def calculate_sensitivity(embeddings): # Estimated this by running a few and taking a max
     """
-    Add differentially private noise to embeddings.
+    Calculate the global sensitivity of the dataset.
+
     Args:
-        embeddings (torch.Tensor): The sparse embeddings.
-        epsilon (float): Privacy budget parameter.
+        embeddings (torch.Tensor): A tensor of shape (n_samples, embedding_dim) containing all embeddings.
+
     Returns:
-        torch.Tensor: Noisy embeddings.
+        float: The global sensitivity (maximum Euclidean distance between any two embeddings).
     """
-    sensitivity = 1  # Sensitivity of the embeddings
+    n_samples = embeddings.shape[0]
+    print("Shape: ", embeddings.shape)
+    max_distance = 0.0
+
+    # Compute pairwise distances between all embeddings
+    for i in range(n_samples):
+        for j in range(i + 1, n_samples):
+            distance = torch.norm(embeddings[i] - embeddings[j], p=2).item()
+            max_distance = max(max_distance, distance)
+
+    print(f"Sensitivity: {max_distance}")
+    return max_distance
+
+
+def add_differential_privacy_noise(embeddings, epsilon=1.0, sensitivity=0.0, word_embeddings=None):
+    """
+    Add differentially private noise to embeddings using the MADLIB mechanism.
+
+    Args:
+        embeddings (torch.Tensor): The sparse embeddings to privatize.
+        epsilon (float): Privacy budget parameter.
+        word_embeddings (torch.Tensor): A tensor of shape (vocab_size, embedding_dim) containing valid word embeddings.
+
+    Returns:
+        torch.Tensor: Noisy embeddings mapped back to the nearest valid word embedding.
+    """
+    # Step 1: Calculate sensitivity (global or precomputed)
+    sensitivity = sensitivity
+
+    # Step 2: Add noise proportional to sensitivity and epsilon
     scale = sensitivity / epsilon
     noise = torch.normal(mean=0, std=scale, size=embeddings.shape, device=embeddings.device)
-    print("Noise norm:", torch.norm(noise))
     noisy_embeddings = embeddings + noise
-    print("Difference between original and noisy embeddings (norm):", torch.norm(embeddings - noisy_embeddings))
+
+    # Step 3: Map noisy embeddings back to the nearest valid word embedding
+    if word_embeddings is not None:
+        # Compute distances to all word embeddings
+        distances = torch.cdist(noisy_embeddings, word_embeddings, p=2)
+        # Find the nearest word embedding for each noisy embedding
+        nearest_indices = distances.argmin(dim=1)
+        noisy_embeddings = word_embeddings[nearest_indices]
+
     return noisy_embeddings
 
-def preprocess_and_store_noisy_decoded_embeddings():
+def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0):
     """
     Preprocess the dataset, generate sparse embeddings using pythia-70m-deduped,
     add differentially private noise, decode them back to the original basis,
     and store them in a Qdrant collection.
+
+    Args:
+        replace_prob (float): Probability of replacing the original token with the noisy one.
+        epsilon (float): Privacy budget parameter for differential privacy.
     """
     
     if torch.backends.mps.is_available():
@@ -50,40 +91,84 @@ def preprocess_and_store_noisy_decoded_embeddings():
         device="cpu",
     )
     sae = sae.to(device)
-    print("did we miss it??: ",cfg_dict) #all good? gonna run it mhm bru did it not print, am i bugging it did not yea no it did not print
+    print("SAE configuration ",cfg_dict) 
+
+    def decode_with_hooks(tokens, hook_func, max_new_tokens=50):
+            """
+            Decoding with hooks and randomized response.
+
+            Args:
+                tokens (torch.Tensor): Original input tokens.
+                hook_func (callable): Hook function to modify activations.
+                max_new_tokens (int): Maximum number of tokens to generate.
+
+            Returns:
+                torch.Tensor: Generated tokens.
+            """
+            generated_tokens = tokens.clone()
+
+            for i in range(max_new_tokens):
+                # Use run_with_hooks to apply the hook during the forward pass
+                logits = model.run_with_hooks(
+                    generated_tokens,
+                    return_type="logits",
+                    fwd_hooks=[(sae.cfg.hook_name, hook_func)],
+                )
+
+                # Select the most probable token from logits
+                next_token = logits[:, i, :].argmax(dim=-1, keepdim=True)
+
+                # Randomized response: Replace token with probability `replace_prob`
+                if torch.rand(1).item() < replace_prob:
+                    generated_tokens[:, i] = next_token.squeeze(-1)
+
+                # Stop if EOS token is generated
+                if next_token.item() == model.tokenizer.eos_token_id:
+                    break
+
+            return generated_tokens
 
     def preprocess_function(examples):
         # Tokenize the texts
         decoded_embeddings = []
-        print("no of examples: ", len(examples['text'])) # is that right? yh i reckon cool ummmmm oh wait, I may have fucked up again lol where? Wait so map maos preprocess to every datapoint in the dataset - like what is examples 
-        
+        storage = []  # Temporarily store the decoded embeddings
+
         for text in examples['text']:
-            print("text: ", text) # sanity check
+            print("text: ", text)  # Sanity check
             tokens = model.to_tokens(text, prepend_bos=True)
+   
+            def noise_hook_sae(activation_value, hook):
+                # Modify activations using the decoded embeddings
+                with torch.no_grad():
+                    # Encode to sparse basis
+                    sparse_embeddings = sae.encode(activation_value)
+                    # sensitivity= calculate_sensitivity(sparse_embeddings[0])
+                    sensitivity=35.0 # Precomputed sensitivity value
+                    # Add noise in the sparse basis
+                    noisy_sparse_embeddings = add_differential_privacy_noise(sparse_embeddings, sensitivity=sensitivity, epsilon=epsilon)
+                    # Decode back to the original basis
+                    decoded_embeddings_text = sae.decode(noisy_sparse_embeddings)
+                    storage.append(decoded_embeddings_text)
+                    return decoded_embeddings_text
 
             # Generate embeddings, add noise, and decode
             with torch.no_grad():
-                _, cache = model.run_with_cache(tokens)
-                dense_embeddings = cache[sae.cfg.hook_name]
-                sparse_embeddings = sae.encode(dense_embeddings)
-                noisy_sparse_embeddings = add_differential_privacy_noise(sparse_embeddings)
-                decoded_embeddings_text = sae.decode(noisy_sparse_embeddings).cpu().numpy()
-            
-            # print("tokens per text:", tokens.shape)                  
-            # print("dense per text:", dense_embeddings.shape)        
-            # print("decoded per text:", decoded_embeddings_text.shape)
-            print("Euclidean distance between original and noised: ", np.linalg.norm(dense_embeddings[0, -1, :] - decoded_embeddings_text[0, -1, :])) # should be 0, if not then something is wrong
-            decoded_embeddings.append(decoded_embeddings_text[0, -1, :])  # use last vector as the embedding as this is after last token has been passed in    
-            # I'm here
-        # trying to fix docker issues. I think this was caused when I restarted. SIGH gotchu
-        #idk why it is not printing! maybe it is piping into the txt file? but that does not make sense because the program is not done running
-       
+                output_tokens = decode_with_hooks(tokens, noise_hook_sae, max_new_tokens=tokens.shape[1])
 
 
-        print("total no. of embedddings: ", len(decoded_embeddings))
+            # Decode the output tokens to text
+            # approximate_text = model.tokenizer.decode(output.argmax(dim=-1)[0])
+            approximate_text = model.tokenizer.decode(output_tokens[0])
+            print("approximate text: ", approximate_text)
+
+            # Use the last vector as the embedding
+            last_embedding = storage[-1][0, -1, :].cpu().numpy()
+            decoded_embeddings.append(last_embedding)
+
+        print("total no. of embeddings: ", len(decoded_embeddings))
         return {'noisy_decoded_embeddings': decoded_embeddings}
 
-    
+
     
 
     # # Load dataset
@@ -116,10 +201,10 @@ def preprocess_and_store_noisy_decoded_embeddings():
         print("Loading dataset...")
         
         
-        dataset = load_dataset("mteb/tweet_sentiment_extraction", split=split)
+        # dataset = load_dataset("mteb/tweet_sentiment_extraction", split=split)
         # I added this so I could run quickly for testing, but change back for gpu runs
-        # dataset_large = load_dataset("mteb/tweet_sentiment_extraction", split=split)
-        # dataset = dataset_large.select(range(0,100)) # Select a subset of the dataset for testing
+        dataset_large = load_dataset("mteb/tweet_sentiment_extraction", split=split)
+        dataset = dataset_large.select(range(0,100)) # Select a subset of the dataset for testing
 
         print(dataset.info)
 

@@ -24,10 +24,22 @@ parser.add_argument(
     default="logistic",
     help="Specify which model to use: 'logistic' or 'dp_logistic'."
 )
+parser.add_argument(
+    "--replace_prob",
+    type=float,
+    default=0.5,
+    help="Probability of replacing the original token with the noisy one."
+)
+parser.add_argument(
+    "--epsilon",
+    type=float,
+    default=1.0,
+    help="Privacy budget parameter for differential privacy."
+)
 args = parser.parse_args()
 # preprocess_and_store_data()
 # preprocess_and_store_data()
-preprocess_and_store_noisy_decoded_embeddings()
+preprocess_and_store_noisy_decoded_embeddings(replace_prob=args.replace_prob, epsilon=args.epsilon)
 # Check if Qdrant data is empty
 # if is_qdrant_data_empty(QDRANT_DATA_PATH):
 #     print("Qdrant data is empty. Running preprocessing...")
