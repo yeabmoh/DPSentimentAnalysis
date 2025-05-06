@@ -32,17 +32,28 @@ y_attack = np.concatenate([shadow_train_labels_all, shadow_nontrain_labels_all])
 attack_model = LogisticRegression()
 attack_model.fit(X_attack, y_attack)
 
-# ✅ Evaluate attack performance on shadow models
-y_attack_pred = attack_model.predict(X_attack)
-print("Attack Accuracy:", accuracy_score(y_attack, y_attack_pred))
-print("Attack Precision:", precision_score(y_attack, y_attack_pred, zero_division=0))
-print("Attack Recall:", recall_score(y_attack, y_attack_pred, zero_division=0))
+# Evaluate on non-DP target model
+target_non_dp_probs = np.load('target_non_dp_probs.npy')
+target_non_dp_labels = np.load('target_non_dp_labels.npy')
+y_non_dp_scores = attack_model.predict_proba(target_non_dp_probs)[:, 1]
+y_non_dp_pred = (y_non_dp_scores > 0.5).astype(int)
 
-# ✅ Evaluate on target model
-target_probs = np.load('target_model_probs.npy')
-target_membership_labels = np.load('target_model_labels.npy')
-y_target_pred = attack_model.predict(target_probs)
+print("\n[Non-DP Target Attack]")
+print("Target Attack Accuracy:", accuracy_score(target_non_dp_labels, y_non_dp_pred))
+print("Target Attack Precision:", precision_score(target_non_dp_labels, y_non_dp_pred, zero_division=0))
+print("Target Attack Recall:", recall_score(target_non_dp_labels, y_non_dp_pred, zero_division=0))
 
-print("Target Attack Accuracy:", accuracy_score(target_membership_labels, y_target_pred))
-print("Target Attack Precision:", precision_score(target_membership_labels, y_target_pred, zero_division=0))
-print("Target Attack Recall:", recall_score(target_membership_labels, y_target_pred, zero_division=0))
+# Evaluate on DP target model (with probability thresholding)
+target_dp_probs = np.load('target_dp_probs.npy')
+target_dp_labels = np.load('target_dp_labels.npy')
+y_dp_scores = attack_model.predict_proba(target_dp_probs)[:, 1]
+y_dp_pred = (y_dp_scores > 0.5).astype(int)
+
+print("\n[DP Target Attack]")
+print("Target Attack Accuracy:", accuracy_score(target_dp_labels, y_dp_pred))
+print("Target Attack Precision:", precision_score(target_dp_labels, y_dp_pred, zero_division=0))
+print("Target Attack Recall:", recall_score(target_dp_labels, y_dp_pred, zero_division=0))
+
+print("DP predicted counts:", np.unique(y_dp_pred, return_counts=True))
+
+print("non-DP predicted counts:", np.unique(y_non_dp_pred, return_counts=True))
