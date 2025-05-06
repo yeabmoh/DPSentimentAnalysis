@@ -53,3 +53,9 @@ class LogisticModel:
     def load(self, filepath: str):
         from joblib import load
         self.model = load(filepath)
+
+    def predict_proba(self, X: np.ndarray) -> np.ndarray:
+        """
+        Return predicted probabilities from the logistic regression model.
+        """
+        return self.model.predict_proba(X)
