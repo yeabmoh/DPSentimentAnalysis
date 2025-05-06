@@ -3,10 +3,11 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, precision_score, recall_score
 
 # Load shadow model outputs
-shadow_train_probs = np.load('shadow_model_0_train_probs.npy')
-shadow_nontrain_probs = np.load('shadow_model_0_nontrain_probs.npy')
-shadow_train_labels = np.load('shadow_model_0_train_labels.npy')
-shadow_nontrain_labels = np.load('shadow_model_0_nontrain_labels.npy')
+shadow_train_probs = np.load('shadow_model_outputs/shadow_model_0_train_probs.npy')
+shadow_nontrain_probs = np.load('shadow_model_outputs/shadow_model_0_nontrain_probs.npy')
+shadow_train_labels = np.load('shadow_model_outputs/shadow_model_0_train_labels.npy')
+shadow_nontrain_labels = np.load('shadow_model_outputs/shadow_model_0_nontrain_labels.npy')
+
 
 # Combine into attack dataset
 X_attack = np.vstack([shadow_train_probs, shadow_nontrain_probs])
