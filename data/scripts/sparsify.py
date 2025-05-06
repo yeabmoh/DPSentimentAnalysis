@@ -21,16 +21,11 @@ def calculate_sensitivity(embeddings): # Estimated this by running a few and tak
     Returns:
         float: The global sensitivity (maximum Euclidean distance between any two embeddings).
     """
-    n_samples = embeddings.shape[0]
-    print("Shape: ", embeddings.shape)
-    max_distance = 0.0
-
-    # Compute pairwise distances between all embeddings
-    for i in range(n_samples):
-        for j in range(i + 1, n_samples):
-            distance = torch.norm(embeddings[i] - embeddings[j], p=2).item()
-            max_distance = max(max_distance, distance)
-
+    """
+    Calculate the global sensitivity of the dataset using vectorized operations.
+    """
+    distances = torch.cdist(embeddings, embeddings, p=2)  # Compute pairwise distances
+    max_distance = distances.max().item()  # Find the maximum distance
     print(f"Sensitivity: {max_distance}")
     return max_distance
 
@@ -106,15 +101,14 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
                 torch.Tensor: Generated tokens.
             """
             generated_tokens = tokens.clone()
+            # Use run_with_hooks to apply the hook during the forward pass
+            logits = model.run_with_hooks(
+                generated_tokens,
+                return_type="logits",
+                fwd_hooks=[(sae.cfg.hook_name, hook_func)],
+            )
 
             for i in range(max_new_tokens):
-                # Use run_with_hooks to apply the hook during the forward pass
-                logits = model.run_with_hooks(
-                    generated_tokens,
-                    return_type="logits",
-                    fwd_hooks=[(sae.cfg.hook_name, hook_func)],
-                )
-
                 # Select the most probable token from logits
                 next_token = logits[:, i, :].argmax(dim=-1, keepdim=True)
 
@@ -131,7 +125,6 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
     def preprocess_function(examples):
         # Tokenize the texts
         decoded_embeddings = []
-        storage = []  # Temporarily store the decoded embeddings
 
         for text in examples['text']:
             print("text: ", text)  # Sanity check
@@ -148,7 +141,6 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
                     noisy_sparse_embeddings = add_differential_privacy_noise(sparse_embeddings, sensitivity=sensitivity, epsilon=epsilon)
                     # Decode back to the original basis
                     decoded_embeddings_text = sae.decode(noisy_sparse_embeddings)
-                    storage.append(decoded_embeddings_text)
                     return decoded_embeddings_text
 
             # Generate embeddings, add noise, and decode
@@ -156,14 +148,23 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
                 output_tokens = decode_with_hooks(tokens, noise_hook_sae, max_new_tokens=tokens.shape[1])
 
 
-            # Decode the output tokens to text
-            # approximate_text = model.tokenizer.decode(output.argmax(dim=-1)[0])
+            # # Decode the output tokens to text
+            # # approximate_text = model.tokenizer.decode(output.argmax(dim=-1)[0])
             approximate_text = model.tokenizer.decode(output_tokens[0])
             print("approximate text: ", approximate_text)
 
-            # Use the last vector as the embedding
-            last_embedding = storage[-1][0, -1, :].cpu().numpy()
-            decoded_embeddings.append(last_embedding)
+
+            # Use run_with_cache to reembed embeddings with any adjustments after mechanisms
+            with torch.no_grad():
+                _, cache = model.run_with_cache(output_tokens[0])
+
+            # Extract the embedding from the desired layer (e.g., final hidden state or specific layer)
+            final_embedding = cache[sae.cfg.hook_name][0, -1, :].cpu().numpy()
+
+            # Store the final embedding
+            decoded_embeddings.append(final_embedding)
+
+
 
         print("total no. of embeddings: ", len(decoded_embeddings))
         return {'noisy_decoded_embeddings': decoded_embeddings}
@@ -201,10 +202,10 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
         print("Loading dataset...")
         
         
-        # dataset = load_dataset("mteb/tweet_sentiment_extraction", split=split)
+        dataset = load_dataset("mteb/tweet_sentiment_extraction", split=split)
         # I added this so I could run quickly for testing, but change back for gpu runs
-        dataset_large = load_dataset("mteb/tweet_sentiment_extraction", split=split)
-        dataset = dataset_large.select(range(0,100)) # Select a subset of the dataset for testing
+        # dataset_large = load_dataset("mteb/tweet_sentiment_extraction", split=split)
+        # dataset = dataset_large.select(range(0,100)) # Select a subset of the dataset for testing
 
         print(dataset.info)
 

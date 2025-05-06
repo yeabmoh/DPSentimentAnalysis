@@ -22,13 +22,6 @@ parser.add_argument("--model", type=str, choices=["logistic", "dp_logistic", "ml
 parser.add_argument("--shadow", type=int, default=0,
                     help="Number of shadow models to train for MIA experiment (0 = skip shadow phase).")
 parser.add_argument(
-    "--model",
-    type=str,
-    choices=["logistic", "dp_logistic", "mlp"],
-    default="logistic",
-    help="Specify which model to use: 'logistic' or 'dp_logistic'."
-)
-parser.add_argument(
     "--replace_prob",
     type=float,
     default=0.5,
@@ -43,14 +36,13 @@ parser.add_argument(
 args = parser.parse_args()
 
 # Preprocess and store data if needed
-preprocess_and_store_data()
-
-# Load data
-X_train, y_train = load_data_from_qdrant(TRAIN_COLLECTION_NAME)
-X_test, y_test = load_data_from_qdrant(TEST_COLLECTION_NAME)
-# preprocess_and_store_data()
 # preprocess_and_store_data()
 preprocess_and_store_noisy_decoded_embeddings(replace_prob=args.replace_prob, epsilon=args.epsilon)
+
+
+# Load data
+# preprocess_and_store_data()
+# preprocess_and_store_data()
 # Check if Qdrant data is empty
 # if is_qdrant_data_empty(QDRANT_DATA_PATH):
 #     print("Qdrant data is empty. Running preprocessing...")

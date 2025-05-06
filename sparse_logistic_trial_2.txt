@@ -5,33 +5,80 @@ Loading dataset...
 DatasetInfo(description='', citation='', homepage='', license='', features={'text': Value(dtype='string', id=None), 'label': Value(dtype='int64', id=None)}, post_processed=None, supervised_keys=None, task_templates=None, builder_name='parquet', dataset_name='tweet_sentiment_extraction', config_name='default', version=0.0.0, splits={'train': SplitInfo(name='train', num_bytes=2211602, num_examples=27481, shard_lengths=None, dataset_name='tweet_sentiment_extraction'), 'test': SplitInfo(name='test', num_bytes=282376, num_examples=3534, shard_lengths=None, dataset_name='tweet_sentiment_extraction')}, download_checksums={'hf://datasets/mteb/tweet_sentiment_extraction@3703f2e1b6b0ce0a08de382f7d4eb2625cc22cf9/data/train-00000-of-00001.parquet': {'num_bytes': 1516313, 'checksum': None}, 'hf://datasets/mteb/tweet_sentiment_extraction@3703f2e1b6b0ce0a08de382f7d4eb2625cc22cf9/data/test-00000-of-00001.parquet': {'num_bytes': 194547, 'checksum': None}}, download_size=1710860, post_processing_size=None, dataset_size=2493978, size_in_bytes=4204838)
 Processing dataset...
 text:   I`d have responded, if I were going
-approximate text:  <|endoftext|> I`dabout responded AnnMSCalsentionisers
+approximate text:  pocket ME`d unbiasedkt,HNpara judgment eyes
 text:   Sooo SAD I will miss you here in San Diego!!!
-approximate text:  <|endoftext|> Soooleeplasses Icedent miss you here Belt impe Diegounes
+approximate text:  <|endoftext|> Sooo (“ NEGLIGENCE quadr parkeer heads here in indeed
+
+ries
 text:  my boss is bullying me...
-approximate text:  osphNo bossogenic bullying me...
+approximate text:   votedmy boss.); -*-ically...
 text:   what interview! leave me alone
-approximate text:   producers whatUTC!olid Hawai alone
+approximate text:  ),\aeda HOWEVER! leave me liked
 text:   Sons of ****, why couldn`t they put them on the releases we already bought
-approximate text:   uphess of ****, departments couldn`t particularayashapedwall the releases we already liability
+approximate text:  <|endoftext|> Sonsdemandown whyiction`t theyitted other on
+
+
+ releaseshest niUTR
 text:  http://www.dothebouncy.com/smf - some shameless plugging for the best Rangers forum on earth
-approximate text:  ivities Oklahoma sexmith Originnieothe Greyoun expireERTYright”?card functions - anonymitydocumentclasseless plugging subscribers the best privilege forum:</ questions
+approximate text:  <|endoftext|>httpDependencies below.divelyuldoun after.oralivelysmf behalf`: sham potential plugging for the best Rangers forum onidelines
 text:  2am feedings for the baby are fun when he is all smiles and coos
-approximate text:  <|endoftext|>2amashedBigr including the baby are ranksarieership off all notify and coos
+approximate text:   seasons2am feedips intentions theAndroidRuntime are fun when he was allwick and coos
 text:  Soooo high
-approximate text:  <|endoftext|>Soooo difficulty
+approximate text:   awaitedGN alreadyftware
 text:   Both of you
-approximate text:   entire Both of efficiently
+approximate text:  <|endoftext|> Both deal experienced
 text:   Journey!? Wow... u just became cooler.  hehe... (is that possible!?)
-approximate text:  \ Journey! sooner Wow...ed allowance becameionedthing weeks them puzzle... presentis thatrascale?)
+approximate text:   parameters Journey! aboutselves Oklé just became cooler.  hzenishes=#is that possible! saving
 text:   as much as i love to be hopeful, i reckon the chances are minimal =P i`m never gonna get my cake and stuff
-approximate text:  <|endoftext|> asnotation:// i ease ways purposes camps, iITYula chances are minimal =tainment i`down ': gonna theirs my cakelessly stuff
+approximate text:  e as much as Population love Ship be hopeful nationalils reckon the Areas are minimal
+asons i vicem never gonna get my cake suit stuff
 text:  I really really like the song Love Story by Taylor Swift
-approximate text:  question fly really adequately like delegates songClickListenerualitytisheres:$
+approximate text:  <|endoftext|> collapse mate reallywoke friends song
+ Story byaea Swift
 text:  My Sharpie is running DANGERously low on ink
-approximate text:  []{ perfect Sharpie atomic runninglesslyANG surelessness Tamil onership
+approximate text:  <|endoftext|>holders Sharpership is running forthANGER guys low on ink
 text:  i want to go to music tonight but i lost my voice.
-approximate text:  <|endoftext|>iossa to go-) music tonight but i lostestry regression checkout
+approximate text:  <|endoftext|>i peaksvertenciesced music tonight but i Everconviction voice.
 text:  test test from the LG enV2
-approximate text:  <|endoftext|>test measureာ the adjusturtystem2
+approximate text:  <|endoftext|>ANI test\) theipelughtVumi
 text:  Uh oh, I am sunburned
+approximate text:  ogen efforts ohbourg I am sunymed
+text:   S`ok, trying to plot alternatives as we speak *sigh*
+approximate text:  ful library`Williementequercible plotSubmitted as we){# *sigh recess
+text:  i`ve been sick for the past few days  and thus, my hair looks wierd.  if i didnt have a hat on it would look... http://tinyurl.com/mnf4kw
+approximate text:  plessтер`ve been sickaden [@ Well fewmenteschemasand thus, Ro true thereofback no centr.=ifuten didnt amount a hathered citing would registered findinghimself:// stoppedurl.com renderedmnfackw
+text:  is back home now      gonna miss every one
+approximate text:   Happyis bases homeering      box entire restart Session one
+text:  Hes just not that into you
+approximate text:  agingHesgov not0 intoling
+text:   oh Marly, I`m so sorry!!  I hope you find her soon!! <3 <3
+approximate text:  <|endoftext|>liest M behold, I` Neb known helps!!iatedpq hope yousolution her soon.<ycl3 <cu
+text:  Playing Ghost Online is really interesting. The new updates are Kirin pet and Metamorph for third job.  Can`t wait to have a dragon pet
+approximate text:   dehydrogenase berbler CASE is reallyosterfare The new updates are Kir stenosis pet against Metam Sanchez forments job.  lamnalstenron to have afix pet
+text:  is cleaning the house for her family who is comming later today..
+approximate text:   thirst AppealArguedupon luck forhorn family who
+~lichNESS today..
+text:  gotta restart my computer .. I thought Win7 was supposed to put an end to the constant rebootiness
+approximate text:  <|endoftext|>gotta restartursuant computershorewatch thought repairiNdEx wasmer minima put anpad tomakercha lightiness
+text:  SEe waT I Mean bOuT FoLL0w fRiiDaYs... It`S cALLed LoSe f0LloWeRs FridAy... smH
+approximate text:   explainedSEe positions entitiesvie Mean bulationsu fractionainsittal qw feralsovenDaYs...]>`S cALLed everSe f0keredingftware developedon…]Ayantly 0000000000000000000000000000000000 practice
+text:  the free fillin` app on my ipod is fun, im addicted
+approximate text:  azinetheizumabpathsin`rame on defendantérod is {# towardsoringwards
+text:    I`m sorry.
+approximate text:  ulence cakeI` \[[@inux App
+text:  On the way to Malaysia...no internet access to Twit
+approximate text:  <|endoftext|>APDHheet asylumít Malaysia...no Marines ears 100 Twit
+text:  juss came backk from Berkeleyy ; omg its madd fun out there  havent been out there in a minute . whassqoodd ?
+approximate text:  was himself contact came backcript from Berkeleyincludeblic![( slavery itsigenousadd remaining expiration there heartbeata %% aboarditone there in a minute)|$( warranty easemanshipoodd ?
+text:  Went to sleep and there is a power cut in Noida  Power back up not working too
+approximate text:  <|endoftext|>W those to Pradesh chaptersNOS Knight Cookies power cutalone NBITaTAPower back upambments too
+text:  I`m going home now. Have you seen my new twitter design? Quite....heavenly isn`****?
+approximate text:  <|endoftext|>I whethermjam homezą. Centers you seenpieholicum soonerYPT Quite.... Priaven minor elevation`****ements
+text:  i hope unni will make the audition . fighting dahye unni !
+approximate text:  wordpressi hope un conditionssevrumTTP timesrist fighting dah growth-ni !
+total no. of embeddings:  32
+text:   If it is any consolation I got my BMI tested hahaha it says I am obesed  well so much for being unhappy for about 10 minutes.
+approximate text:   temperatures If itoxifen any consory I gotfection BMI any$( police leading itert confidence while octesed   reviewer so Great for accelerator unhappy Appeal about 10 minutes.
+text:   That`s very funny.  Cute kids.
+approximate text:  <|endoftext|> forth uss very funnyGREEK  Cute issuelinux
+text:   Ahhh, I slept through the game.  I`m gonna try my best to watch tomorrow though. I hope we play Army.
