@@ -68,9 +68,12 @@ def train_and_save(model, X_tr, y_tr, X_te, y_te, tag):
     np.save(f"{tag}_nontrain_probs.npy", probs_test)
     np.save(f"{tag}_train_labels.npy", np.ones(len(y_tr)))
     np.save(f"{tag}_nontrain_labels.npy", np.zeros(len(y_te)))
-    if tag.startswith("logistic") or tag.startswith("dp_logistic_noise0.5"):  # pick which dp noise level to use
-        np.save("target_model_probs.npy", probs_test)
-        np.save("target_model_labels.npy", np.zeros(len(y_te)))  # or use y_te if you want ground-truth labels
+    if tag.startswith("logistic"):
+        np.save("target_non_dp_probs.npy", np.vstack([probs_train, probs_test]))
+        np.save("target_non_dp_labels.npy", np.concatenate([np.ones(len(y_tr)), np.zeros(len(y_te))]))
+    if tag.startswith("dp_logistic_noise0.5"):  # adjust this noise level as needed
+        np.save("target_dp_probs.npy", np.vstack([probs_train, probs_test]))
+        np.save("target_dp_labels.npy", np.concatenate([np.ones(len(y_tr)), np.zeros(len(y_te))]))
 
     metrics = model.evaluate(X_te, y_te)
     print("Accuracy:", metrics["accuracy"])
