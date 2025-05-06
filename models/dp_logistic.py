@@ -121,3 +121,21 @@ class DPLogisticModel(LogisticModel):
             for xb in loader:
                 preds.extend(torch.argmax(self.model(xb), dim=1).cpu().numpy())
         return np.array(preds)
+    
+    def predict_proba(self, X: np.ndarray) -> np.ndarray:
+        """
+        Return softmax probabilities from the DP logistic model.
+        """
+        self.model.eval()
+        X_tensor = torch.tensor(X, dtype=torch.float32)
+        loader = torch.utils.data.DataLoader(X_tensor, batch_size=self.batch_size)
+        probs = []
+
+        with torch.no_grad():
+            for xb in loader:
+                logits = self.model(xb)
+                softmax_probs = torch.nn.functional.softmax(logits, dim=1)
+                probs.append(softmax_probs.cpu().numpy())
+
+        return np.vstack(probs)
+
