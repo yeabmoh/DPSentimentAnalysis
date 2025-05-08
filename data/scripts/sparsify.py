@@ -25,7 +25,7 @@ def calculate_sensitivity(embeddings): # Estimated this by running a few and tak
     Calculate the global sensitivity of the dataset using vectorized operations.
     """
     distances = torch.cdist(embeddings, embeddings, p=2)  # Compute pairwise distances
-    max_distance = distances.max().item()  # Find the maximum distance
+    max_distance = distances.max().item()  
     print(f"Sensitivity: {max_distance}")
     return max_distance
 
@@ -42,19 +42,18 @@ def add_differential_privacy_noise(embeddings, epsilon=1.0, sensitivity=0.0, wor
     Returns:
         torch.Tensor: Noisy embeddings mapped back to the nearest valid word embedding.
     """
-    # Step 1: Calculate sensitivity (global or precomputed)
+   
     sensitivity = sensitivity
 
-    # Step 2: Add noise proportional to sensitivity and epsilon
+  
     scale = sensitivity / epsilon
     noise = torch.normal(mean=0, std=scale, size=embeddings.shape, device=embeddings.device)
     noisy_embeddings = embeddings + noise
 
-    # Step 3: Map noisy embeddings back to the nearest valid word embedding
+
     if word_embeddings is not None:
-        # Compute distances to all word embeddings
+
         distances = torch.cdist(noisy_embeddings, word_embeddings, p=2)
-        # Find the nearest word embedding for each noisy embedding
         nearest_indices = distances.argmin(dim=1)
         noisy_embeddings = word_embeddings[nearest_indices]
 
@@ -116,7 +115,6 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
                 if torch.rand(1).item() < replace_prob:
                     generated_tokens[:, i] = next_token.squeeze(-1)
 
-                # Stop if EOS token is generated
                 if next_token.item() == model.tokenizer.eos_token_id:
                     break
 
@@ -128,28 +126,22 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
         decoded_embeddings = []
 
         for text in examples['text']:
-            # print("text: ", text)  # Sanity check
             tokens = model.to_tokens(text, prepend_bos=True)
    
             def noise_hook_sae(activation_value, hook):
-                # Modify activations using the decoded embeddings
                 with torch.no_grad():
-                    # Encode to sparse basis
                     sparse_embeddings = sae.encode(activation_value)
-                    # sensitivity= calculate_sensitivity(sparse_embeddings[0])
-                    sensitivity=35.0 # Precomputed sensitivity value
-                    # Add noise in the sparse basis
+                    sensitivity=35.0 
                     noisy_sparse_embeddings = add_differential_privacy_noise(sparse_embeddings, sensitivity=sensitivity, epsilon=epsilon)
-                    # Decode back to the original basis
+
                     decoded_embeddings_text = sae.decode(noisy_sparse_embeddings)
                     return decoded_embeddings_text
 
-            # Generate embeddings, add noise, and decode
+
             with torch.no_grad():
                 output_tokens = decode_with_hooks(tokens, noise_hook_sae, max_new_tokens=tokens.shape[1])
 
 
-            # # Decode the output tokens to text
             # # approximate_text = model.tokenizer.decode(output.argmax(dim=-1)[0])
             # approximate_text = model.tokenizer.decode(output_tokens[0])
             # print("approximate text: ", approximate_text)
@@ -162,7 +154,6 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
             # Extract the embedding from the desired layer (e.g., final hidden state or specific layer)
             final_embedding = cache[sae.cfg.hook_name][0, -1, :].cpu().numpy()
 
-            # Store the final embedding
             decoded_embeddings.append(final_embedding)
 
 
@@ -210,14 +201,14 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
 
         print(dataset.info)
 
-        # Preprocessing function
+  
         print("Processing dataset...")
-        # Apply preprocessing to the dataset
+    
         embedded_dataset = dataset.map(preprocess_function, batched=True, batch_size=32)
 
         points = []
         for i, record in enumerate(embedded_dataset): # embeded_dataset[split]
-            # print("vector: ", record['noisy_decoded_embeddings']) # sanity check
+       
             vector = record['noisy_decoded_embeddings'] 
             payload = {"label": record['label']}
             points.append(PointStruct(id=i, vector=vector, payload=payload))
