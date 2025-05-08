@@ -87,7 +87,7 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
     )
     sae = sae.to(device)
     print("SAE configuration ",cfg_dict) 
-
+    
     def decode_with_hooks(tokens, hook_func, max_new_tokens=50):
             """
             Decoding with hooks and randomized response.
@@ -122,12 +122,13 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
 
             return generated_tokens
 
+
     def preprocess_function(examples):
         # Tokenize the texts
         decoded_embeddings = []
 
         for text in examples['text']:
-            print("text: ", text)  # Sanity check
+            # print("text: ", text)  # Sanity check
             tokens = model.to_tokens(text, prepend_bos=True)
    
             def noise_hook_sae(activation_value, hook):
@@ -150,8 +151,8 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
 
             # # Decode the output tokens to text
             # # approximate_text = model.tokenizer.decode(output.argmax(dim=-1)[0])
-            approximate_text = model.tokenizer.decode(output_tokens[0])
-            print("approximate text: ", approximate_text)
+            # approximate_text = model.tokenizer.decode(output_tokens[0])
+            # print("approximate text: ", approximate_text)
 
 
             # Use run_with_cache to reembed embeddings with any adjustments after mechanisms
@@ -202,10 +203,10 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
         print("Loading dataset...")
         
         
-        dataset = load_dataset("mteb/tweet_sentiment_extraction", split=split)
+        # dataset = load_dataset("mteb/tweet_sentiment_extraction", split=split)
         # I added this so I could run quickly for testing, but change back for gpu runs
-        # dataset_large = load_dataset("mteb/tweet_sentiment_extraction", split=split)
-        # dataset = dataset_large.select(range(0,100)) # Select a subset of the dataset for testing
+        dataset_large = load_dataset("mteb/tweet_sentiment_extraction", split=split)
+        dataset = dataset_large.select(range(0, 500)) 
 
         print(dataset.info)
 
@@ -216,7 +217,7 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
 
         points = []
         for i, record in enumerate(embedded_dataset): # embeded_dataset[split]
-            print("vector: ", record['noisy_decoded_embeddings']) # sanity check
+            # print("vector: ", record['noisy_decoded_embeddings']) # sanity check
             vector = record['noisy_decoded_embeddings'] 
             payload = {"label": record['label']}
             points.append(PointStruct(id=i, vector=vector, payload=payload))
@@ -230,5 +231,4 @@ def preprocess_and_store_noisy_decoded_embeddings(replace_prob=0.5, epsilon=1.0)
             print(f"Inserted points {start_idx} to {end_idx} into collection '{collection_name}'.")
 
 if __name__ == "__main__":
-    
     preprocess_and_store_noisy_decoded_embeddings()

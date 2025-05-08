@@ -15,9 +15,10 @@ def create_collection(qdrant_client: QdrantClient,
                 ):
     """Creates new collection if it doesn't exist"""
 
-    if not qdrant_client.collection_exists(collection_name):
-        logger.info(f"Creating new Qdrant collection: {collection_name}")
-        qdrant_client.create_collection(
+    if qdrant_client.collection_exists(collection_name):
+        qdrant_client.delete_collection(collection_name)
+    logger.info(f"Creating new Qdrant collection: {collection_name}")
+    qdrant_client.create_collection(
             collection_name=collection_name,
             vectors_config=VectorParams(
                 size=vector_dimensions,
@@ -53,5 +54,3 @@ def scroll_collection(client: QdrantClient, collection_name: str, limit: int = 1
     """
     response = client.scroll(collection_name=collection_name, with_payload=True, with_vectors=True, limit=limit)
     return response[0]  # response[0] contains the points
-
-
